@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:EsrivaMobile.Views"
+            mc:Ignorable="d"
+            x:Class="EsrivaMobile.AppShell"
+            Title="Esriva"
+            BackgroundColor="#1BBC9B"
+            Shell.MenuItemTemplate="{StaticResource SideBarMenuTemplate}"
+            Shell.ItemTemplate="{StaticResource SideBarMenuTemplate}"
+            Shell.FlyoutHeaderTemplate="{StaticResource FlyoutHeaderTemplate}"
+            FlyoutHeaderBehavior="CollapseOnScroll">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Color x:Key="GrayColor">Black</Color>
+            <Color x:Key="TabBGColor">#1BBC9B</Color>
+            <Color x:Key="BGColor">#2C3D50</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource TabBGColor}"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource WhiteColor}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource BGColor}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource WhiteColor}"/>
+            </Style>
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}"/>
+            <DataTemplate x:Key="SideBarMenuTemplate">
+                <StackLayout Orientation="Horizontal">
+                    <Image Margin="30,10,20,10"
+                       Source="{Binding Icon}"
+                       WidthRequest="22"
+                       HeightRequest="22"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       />
+                    <Label Text="{Binding Title}"
+                       TextColor="#686868"
+                       FontSize="16"
+                       VerticalOptions="Center"/>
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="FlyoutHeaderTemplate">
+                <ContentView BackgroundColor="{StaticResource BGColor}" 
+                         HeightRequest="245">
+                    <Image Source="Esriva_Prototype_logo.png" 
+                       WidthRequest="96"
+                       HeightRequest="96"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                </ContentView>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <FlyoutItem Route="main" Title="Home" Icon="ic_home_120dp.png" FlyoutDisplayOptions="AsSingleItem">
+        <Tab Route="friends" Title="Friends" Icon="ic_supervised_user_circle.png">
+            <ShellContent>
+                <local:FriendsPage Title="Friends"/>
+            </ShellContent>
+        </Tab>
+
+        <Tab Route="forum" Title="Forum" Icon="ic_forum_86dp.png">
+            <ShellContent>
+                <local:ForumPage Title="Forum"/>
+            </ShellContent>
+        </Tab>
+
+        <Tab Route="artikel" Title="Artikel" Icon="ic_article_98dp.png">
+            <ShellContent>
+                <local:ArticlePage Title="Artikel"/>
+            </ShellContent>
+        </Tab>
+
+        <Tab Route="notification" Title="Notification" Icon="ic_notifications_active.png">
+            <ShellContent>
+                <local:NotificationPage Title="Notification"/>
+            </ShellContent>
+        </Tab>
+
+        <Tab Route="profile" Title="Profile" Icon="ic_profile_86dp.png">
+            <ShellContent>
+                <local:ProfilePage Title="Profile"/>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+
+    <MenuItem Text="Umpan Balik" Command="{Binding FeedbackCommand}" CommandParameter="umpanBalik" IconImageSource="ic_feedback_120dp.png"/>
+    <MenuItem Text="Atur Psikolog" Command="{Binding SettingPscCommand}" CommandParameter="aturPsikolog" IconImageSource="ic_psychologist_120dp.png"/>
+    <MenuItem Text="Atur Pengguna" Command="{Binding SettingUserCommand}" CommandParameter="aturPengguna" IconImageSource="ic_users_120dp.png"/>
+    <MenuItem Text="Pesan Beranda" Command="{Binding HomeMessagesCommand}" CommandParameter="pesanBeranda" IconImageSource="ic_messages_120dp.png"/>
+    <MenuItem Text="Aktivitas Psikolog" Command="{Binding PActivityCommand}" CommandParameter="aktivitasPsikolog" IconImageSource="ic_activity_120dp.png"/>
+    <MenuItem Text="Laporan" Command="{Binding ReportCommand}" CommandParameter="laporan" IconImageSource="ic_report_120dp.png"/>
+    <MenuItem Text="Bantuan" Command="{Binding HelpCommand}" CommandParameter="help" IconImageSource="ic_help_120dp.png"/>
+    <MenuItem Text="Tentang Kami" Command="{Binding AboutCommand}" CommandParameter="about" IconImageSource="ic_about_us_120dp.png"/>
+
+</Shell>

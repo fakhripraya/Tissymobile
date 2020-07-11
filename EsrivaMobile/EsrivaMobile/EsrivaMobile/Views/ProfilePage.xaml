@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             Shell.NavBarIsVisible="False"
+             mc:Ignorable="d"
+             x:Class="EsrivaMobile.Views.ProfilePage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Color x:Key="BlackColor">#000000</Color>
+            <Color x:Key="TabBGColor">#323238</Color>
+            <Color x:Key="BGColor">#202225</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource TabBGColor}"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource WhiteColor}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource BGColor}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource WhiteColor}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid VerticalOptions="FillAndExpand" BackgroundColor="#1E1E1E">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout BackgroundColor="#1E1E1E" Grid.Row="1"/>
+
+            <Frame CornerRadius="200" Margin="40,-40,40,-40" Padding="0" Scale="0.4">
+                <Image Source="Biksu.png" Aspect="Fill"/>
+            </Frame>
+            <ImageButton Source="ic_exit.png" WidthRequest="30" HeightRequest="30" Margin="0,10,10,0" HorizontalOptions="End" VerticalOptions="Start" Clicked="ImageButton_Clicked_1"/>
+            <ImageButton Source="ic_menu_circle.png" WidthRequest="30" HeightRequest="30" Margin="10,10,0,0" HorizontalOptions="Start" VerticalOptions="Start" Clicked="ImageButton_Clicked"/>
+            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" Padding="18" HeightRequest="220" VerticalOptions="StartAndExpand" BackgroundColor="#333337">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Vertical" Spacing="6" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Fakhri Prayatna Putra" FontSize="20" FontAttributes="Bold" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+                        <Label Text="(Admin)" FontSize="12" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+                        <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Image Source="location.png" WidthRequest="10" HeightRequest="15" VerticalOptions="Center"/>
+                            <Label Text="South Jakarta , Jakarta , Indonesia" TextColor="White" FontSize="14" FontAttributes="Bold" VerticalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Image Source="PhotoIcon.png" WidthRequest="45" HeightRequest="45" HorizontalOptions="Center"/>
+                            <Label Text="Photography" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Image Source="Picnic.png" WidthRequest="45" HeightRequest="45" HorizontalOptions="Center"/>
+                            <Label Text="Picnic" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Image Source="Binoculars.png" WidthRequest="45" HeightRequest="45" HorizontalOptions="Center"/>
+                            <Label Text="Sightseeing" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="2" HasShadow="True" HeightRequest="250" CornerRadius="10" Margin="20" Padding="18" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#333337">
+                <Grid RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="About" FontSize="17" TextColor="White"/>
+                    <Label Grid.Row="1" Text="I am a dedicated person with a family of four. I enjoy reading, and the knowledge and perspective that my reading gives me has strengthened my teaching skills and presentation abilities. I have been successful at raising a family, and I attribute this success to my ability to plan, schedule, and handle many different tasks at once. This flexibility will help me in the classroom, where there are many different personalities and learning styles." FontSize="14" TextColor="White"/>
+                </Grid>
+            </Frame>
+            <Frame x:Name="AdminProfileDash" Grid.Row="3" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" Padding="18,25,18,25" HeightRequest="635" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+
+                    <Frame Grid.Row="0" BackgroundColor="{StaticResource BGColor}" CornerRadius="10" Padding="5">
+                        <Grid HorizontalOptions="Start" VerticalOptions="Start" Padding="10" WidthRequest="300">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame Grid.Column="0" CornerRadius="0" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="{StaticResource BGColor}" BorderColor="{StaticResource BGColor}" HasShadow="False" Padding="5" Margin="-15">
+                                <Image Source="ic_dash_article.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center"/>
+                            </Frame>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start">
+                                <Label Text="Artikel" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="16" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                <Label Text="Diproses : 4" FontAttributes="Bold" TextColor="{StaticResource WhiteColor}" FontSize="20" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="End">
+                                <Label Text="0 artikel baru" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="14" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="1" BackgroundColor="{StaticResource BGColor}" CornerRadius="10" Padding="5">
+                        <Grid HorizontalOptions="Start" VerticalOptions="Start" Padding="10" WidthRequest="300">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame Grid.Column="0" CornerRadius="0" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="{StaticResource BGColor}" BorderColor="{StaticResource BGColor}" HasShadow="False" Padding="5" Margin="-15">
+                                <Image Source="ic_dash_users.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center"/>
+                            </Frame>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start">
+                                <Label Text="Pengguna" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="16" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                <Label Text="Aktif : 4" FontAttributes="Bold" TextColor="{StaticResource WhiteColor}" FontSize="20" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="End">
+                                <Label Text="0 lainnya diblokir" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="14" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="2" BackgroundColor="{StaticResource BGColor}" CornerRadius="10" Padding="5">
+                        <Grid HorizontalOptions="Start" VerticalOptions="Start" Padding="10" WidthRequest="300">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame Grid.Column="0" CornerRadius="0" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="{StaticResource BGColor}" BorderColor="{StaticResource BGColor}" HasShadow="False" Padding="5" Margin="-15">
+                                <Image Source="ic_dash_forum.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center"/>
+                            </Frame>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start">
+                                <Label Text="Forum" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="16" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                <Label Text="Dibuka : 4" FontAttributes="Bold" TextColor="{StaticResource WhiteColor}" FontSize="20" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="End">
+                                <Label Text="2 forum tutup" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="14" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="3" BackgroundColor="{StaticResource BGColor}" CornerRadius="10" Padding="5">
+                        <Grid HorizontalOptions="Start" VerticalOptions="Start" Padding="10" WidthRequest="300">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame Grid.Column="0" CornerRadius="0" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="{StaticResource BGColor}" BorderColor="{StaticResource BGColor}" HasShadow="False" Padding="5" Margin="-15">
+                                <Image Source="ic_dash_comment.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center"/>
+                            </Frame>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start">
+                                <Label Text="Komentar" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="16" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                <Label Text="Laporan : 4" FontAttributes="Bold" TextColor="{StaticResource WhiteColor}" FontSize="20" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="End">
+                                <Label Text="1 komentar ditutup" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="14" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="4" BackgroundColor="{StaticResource BGColor}" CornerRadius="10" Padding="5">
+                        <Grid HorizontalOptions="Start" VerticalOptions="Start" Padding="10" WidthRequest="300">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame Grid.Column="0" CornerRadius="0" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="{StaticResource BGColor}" BorderColor="{StaticResource BGColor}" HasShadow="False" Padding="5" Margin="-15">
+                                <Image Source="ic_dash_feedback.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center"/>
+                            </Frame>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start">
+                                <Label Text="Feedback" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="16" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                <Label Text="Jumlah : 1" FontAttributes="Bold" TextColor="{StaticResource WhiteColor}" FontSize="20" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="End">
+                                <Label Text="0 diantaranya keluhan" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="14" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="5" BackgroundColor="{StaticResource BGColor}" CornerRadius="10" Padding="5">
+                        <Grid HorizontalOptions="Start" VerticalOptions="Start" Padding="10" WidthRequest="300">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame Grid.Column="0" CornerRadius="0" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="{StaticResource BGColor}" BorderColor="{StaticResource BGColor}" HasShadow="False" Padding="5" Margin="-15">
+                                <Image Source="ic_dash_article.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center"/>
+                            </Frame>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start">
+                                <Label Text="Langganan" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="16" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                <Label Text="Jumlah : 0" FontAttributes="Bold" TextColor="{StaticResource WhiteColor}" FontSize="20" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="End">
+                                <Label Text="4 pengguna reguler" FontAttributes="None" TextColor="{StaticResource WhiteColor}" FontSize="14" HorizontalOptions="Center" Padding="0,0,0,0"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="4" HasShadow="True" HeightRequest="90" CornerRadius="10" Margin="20" Padding="18,0,18,0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+                <Grid RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
+                        <Image Source="ic_dash_datep.png" Opacity="0.2"/>
+                    </StackLayout>
+                    <Label Text="Filter Tanggal" FontAttributes="None" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="{StaticResource WhiteColor}"/>
+                    <StackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-30,0,-50">
+                        <DatePicker FontAttributes="Bold" MinimumDate="01/01/0001"
+                                MaximumDate="6/24/2020"
+                                Date="6/24/2020" WidthRequest="500" 
+                                TextColor="{StaticResource WhiteColor}"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="5" HasShadow="True" HeightRequest="65" CornerRadius="10" Margin="20,0,20,0" Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+                <Grid RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Pengunjung" FontAttributes="Bold" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource WhiteColor}"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="6" HasShadow="True" HeightRequest="285" CornerRadius="10" Margin="20,-40,20,20" Padding="10,10,10,-105" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+                <Grid RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Frame CornerRadius="10" BackgroundColor="White" HeightRequest="130">
+                        <forms:ChartView x:Name="sPengunjung" HeightRequest="150" WidthRequest="350" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Frame>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="7" HasShadow="True" HeightRequest="65" CornerRadius="10" Margin="20,0,20,0" Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+                <Grid RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Forum" FontAttributes="Bold" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource WhiteColor}"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="8" HasShadow="True" HeightRequest="285" CornerRadius="10" Margin="20,-40,20,20" Padding="10,10,10,-105" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+                <Grid RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Frame CornerRadius="10" BackgroundColor="White" HeightRequest="130">
+                        <forms:ChartView x:Name="sForum" HeightRequest="150" WidthRequest="350" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Frame>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="9" HasShadow="True" HeightRequest="65" CornerRadius="10" Margin="20,0,20,0" Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+                <Grid RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Artikel" FontAttributes="Bold" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource WhiteColor}"/>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="10" HasShadow="True" HeightRequest="285" CornerRadius="10" Margin="20,-40,20,20" Padding="10,10,10,-105" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+                <Grid RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Frame CornerRadius="10" BackgroundColor="White" HeightRequest="130" >
+                        <forms:ChartView x:Name="sArticle" HeightRequest="150" WidthRequest="350" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Frame>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

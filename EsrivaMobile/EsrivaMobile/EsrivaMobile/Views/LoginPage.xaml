@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:ViewModel="clr-namespace:EsrivaMobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="EsrivaMobile.Views.LoginPage"
+             Title="Login"
+             NavigationPage.HasNavigationBar="false">
+    
+    <ContentPage.BindingContext>
+        <ViewModel:LoginViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#1E1E1E" Orientation="Vertical">
+                <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label 
+                        Text="Hello Psikolog,&#x0a;Selamat Datang Kembali!"
+                        TextColor="White"
+                        FontSize="36"/>
+
+                    <StackLayout Grid.Row="2">
+                        <Entry 
+                            Text="{Binding Email}"
+                            TextColor="White"
+                            Placeholder="Email" 
+                            PlaceholderColor="Gray"
+                            FontSize="16" 
+                            x:Name="EntryUserEmail"
+                            VerticalOptions="Start">
+                        </Entry>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3">
+                        <Entry 
+                            Text="{Binding Password}"
+                            TextColor="White"
+                            Placeholder="Password" 
+                            PlaceholderColor="Gray"
+                            IsPassword="True" 
+                            FontSize="16" 
+                            x:Name="EntryUserPassword"
+                            VerticalOptions="Start"
+                            Margin="0,0,0,30"/>
+                    </StackLayout>
+                    <Frame 
+                        Grid.Row="5"
+                        CornerRadius="20" 
+                        Padding="-5">
+
+                        <Button 
+                            Command="{Binding LoginCommand}"
+                            CommandParameter="dashboard"
+                            Text="Login" 
+                            HorizontalOptions="CenterAndExpand" 
+                            WidthRequest="500" 
+                            TextColor="White" 
+                            BackgroundColor="#1ABA9B"/>
+                    </Frame>
+                    <StackLayout Grid.Row="6">
+                        <Label 
+                            Text="Atau" 
+                            HorizontalOptions="CenterAndExpand"
+                            TextColor="White"
+                            FontSize="14"
+                            Margin="0,5,0,5"/>
+                    </StackLayout>
+                    <Frame 
+                        Grid.Row="7"
+                        CornerRadius="20" 
+                        Padding="-5">
+
+                        <Button 
+                            Text="Register" 
+                            HorizontalOptions="CenterAndExpand" 
+                            WidthRequest="500"
+                            TextColor="White" 
+                            BackgroundColor="#1ABA9B"
+                            Command="{Binding NavigateCommand}"
+                            CommandParameter="register"/>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

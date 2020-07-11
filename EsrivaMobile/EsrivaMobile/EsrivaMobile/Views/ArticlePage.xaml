@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:EsrivaMobile.ViewModels" 
+             xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+             mc:Ignorable="d"
+             Shell.NavBarIsVisible="False"
+             x:Class="EsrivaMobile.Views.ArticlePage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Color x:Key="GrayColor">Gray</Color>
+            <Color x:Key="BlackColor">Black</Color>
+            <Color x:Key="TabBGColor">#1BBC9B</Color>
+            <Color x:Key="BGColor">#2C3D50</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource TabBGColor}"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource WhiteColor}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource BGColor}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource WhiteColor}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModels:ArticleViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout BackgroundColor="#1E1E1E"/>
+
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="225"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <CarouselView
+                ItemsSource="{Binding CarouselElement}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image
+                            Grid.Column="1"
+                            HeightRequest="100"
+                            WidthRequest="100"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Aspect="AspectFill"
+                            Grid.RowSpan="5"
+                            Source="{Binding Thumbnail}"/>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            
+            <Button
+                Grid.Row="0"
+                HeightRequest="40"
+                WidthRequest="130"
+                VerticalOptions="End"
+                HorizontalOptions="Start"
+                BackgroundColor="#333337"
+                Opacity="0.7"
+                CornerRadius="10"
+                Margin="0,0,0,10"
+                Text="Trending"
+                TextColor="White">
+            </Button>
+
+            <Button
+                Grid.Row="0"
+                HeightRequest="40"
+                WidthRequest="130"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                BackgroundColor="#333337"
+                Opacity="0.7"
+                CornerRadius="10"
+                Margin="0,0,0,10"
+                Text="New"
+                TextColor="White">
+            </Button>
+
+            <Button
+                Grid.Row="0"
+                HeightRequest="40"
+                WidthRequest="130"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                BackgroundColor="#333337"
+                Opacity="0.7"
+                CornerRadius="10"
+                Margin="0,0,0,10"
+                Text="Top"
+                TextColor="White">
+            </Button>
+
+            <ImageButton 
+                Source="ic_menu_circle.png" 
+                WidthRequest="30" 
+                HeightRequest="30" 
+                Margin="10,10,0,0" 
+                HorizontalOptions="Start" 
+                VerticalOptions="Start" 
+                Clicked="ImageButton_Clicked"/>
+
+            <ListView
+                Grid.Row="1"
+                ItemsSource="{Binding Items}"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"
+                SeparatorVisibility="None"
+                ItemTapped="ListView_ItemTapped">
+
+                <ListView.Behaviors>
+                    <extended:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
+                </ListView.Behaviors>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame 
+                                CornerRadius="10"
+                                Padding="10"
+                                Margin="10,5,10,5"
+                                BackgroundColor="#333337"
+                                Opacity="0.9">
+                                <Grid Padding="0" 
+                                    RowSpacing="10" 
+                                    ColumnSpacing="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        Text="{Binding Title}"
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="Start"/>
+                                    <Label
+                                        Grid.Row="1"
+                                        TextColor="LightGray"
+                                        Text="{Binding AuthorName}"
+                                        FontSize="14"
+                                        FontAttributes="Italic"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="Start"/>
+                                    <Label
+                                        Grid.Row="2"
+                                        TextColor="White"
+                                        Text="{Binding ArticleContent}"
+                                        FontSize="14"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="Start"/>
+                                    <Label
+                                        Grid.Row="3"
+                                        TextColor="LightGray"
+                                        Text="{Binding PostDate}"
+                                        FontSize="12"
+                                        Margin="0,0,0,-30"
+                                        VerticalOptions="End"
+                                        HorizontalOptions="Start"/>
+                                    <Image
+                                        Grid.Column="1"
+                                        HeightRequest="100"
+                                        WidthRequest="100"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"
+                                        Aspect="AspectFill"
+                                        Grid.RowSpan="5"
+                                        Source="{Binding Thumbnail}"/>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Footer>
+                    <Grid Padding="6" IsVisible="{Binding IsBusy}">
+                        <Grid.Triggers>
+                            <Trigger TargetType="Grid" Property="IsVisible" Value="False">
+                                <Setter Property="HeightRequest" Value="0" />
+                            </Trigger>
+                        </Grid.Triggers>
+                        <Label Text="Loading..." TextColor="DeepPink" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
+                    </Grid>
+                </ListView.Footer>
+            </ListView>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

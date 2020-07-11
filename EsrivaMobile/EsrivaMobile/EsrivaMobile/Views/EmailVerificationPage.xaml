@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:ViewModel="clr-namespace:EsrivaMobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="EsrivaMobile.Views.EmailVerificationPage"
+             Title="Email Verification"
+             NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Color x:Key="GrayColor">Gray</Color>
+            <Color x:Key="BlackColor">Black</Color>
+            <Color x:Key="TabBGColor">#1BBC9B</Color>
+            <Color x:Key="BGColor">#2C3D50</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#1E1E1E" Orientation="Vertical">
+            <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="Verify your Email" FontSize="28" TextColor="White" Margin="0,0,0,25"/>
+                <Label Grid.Row="1" Text="{Binding headerText}" FontSize="14" TextColor="White" Margin="0,0,0,25"/>
+                <Label Grid.Row="2" Text="{Binding bodyText}" FontSize="14" TextColor="White" Margin="0,0,0,25"/>
+                <Frame Grid.Row="3" 
+                    CornerRadius="20" 
+                    WidthRequest="500"
+                    HorizontalOptions="CenterAndExpand">
+                    <Entry Text="{Binding InputOTP}" 
+                               TextColor="White"
+                               PlaceholderColor="Gray"
+                               IsPassword="True" 
+                               FontSize="16" 
+                               x:Name="EntryOTP"/>
+                </Frame>
+                <Frame 
+                Grid.Row="4"
+                CornerRadius="20" 
+                Padding="-5">
+
+                    <Button 
+                    Text="Verify" 
+                    HorizontalOptions="CenterAndExpand" 
+                    WidthRequest="500" TextColor="White" 
+                    BackgroundColor="#1ABA9B"
+                    Command="{Binding VerifyOTPCommand}"/>
+                </Frame>
+                <Frame 
+                Grid.Row="5"
+                CornerRadius="20" 
+                Padding="-5">
+
+                    <Button 
+                    Text="Resend" 
+                    HorizontalOptions="CenterAndExpand" 
+                    WidthRequest="500" TextColor="White" 
+                    BackgroundColor="#1ABA9B"
+                    Command="{Binding ResendEmailCommand}"/>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

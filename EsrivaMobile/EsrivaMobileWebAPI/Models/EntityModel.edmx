@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="esrivamobileModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="aspnetroles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnetuserclaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="longtext" />
+          <Property Name="ClaimValue" Type="longtext" />
+        </EntityType>
+        <EntityType Name="aspnetuserlogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnetuserroles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnetusers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bool" Nullable="false" />
+          <Property Name="PasswordHash" Type="longtext" />
+          <Property Name="SecurityStamp" Type="longtext" />
+          <Property Name="PhoneNumber" Type="longtext" />
+          <Property Name="PhoneNumberConfirmed" Type="bool" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bool" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" Precision="0" />
+          <Property Name="LockoutEnabled" Type="bool" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbfriendlist">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="FriendId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="FriendId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreateBy" Type="varchar" MaxLength="256" />
+          <Property Name="CreateDate" Type="datetime" Precision="0" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="256" />
+          <Property Name="UpdateDate" Type="datetime" Precision="0" />
+          <Property Name="IsDelete" Type="bool" />
+        </EntityType>
+        <EntityType Name="dbuser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="256" />
+          <Property Name="Email" Type="varchar" MaxLength="256" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="12" />
+          <Property Name="CreateBy" Type="varchar" MaxLength="256" />
+          <Property Name="CreateDate" Type="datetime" Precision="0" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="256" />
+          <Property Name="UpdateDate" Type="datetime" Precision="0" />
+          <Property Name="IsVerified" Type="bool" />
+          <Property Name="IsDelete" Type="bool" />
+        </EntityType>
+        <Association Name="ApplicationUser_Claims">
+          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserclaims" Type="Self.aspnetuserclaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserclaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Logins">
+          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserlogins" Type="Self.aspnetuserlogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserlogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Roles">
+          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserroles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_dbuser">
+          <End Role="dbuser" Type="Self.dbuser" Multiplicity="1" />
+          <End Role="dbfriendlist" Type="Self.dbfriendlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbuser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="dbfriendlist">
+              <PropertyRef Name="FriendId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdentityRole_Users">
+          <End Role="aspnetroles" Type="Self.aspnetroles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetroles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserroles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="esrivamobileModelStoreContainer">
+          <EntitySet Name="aspnetroles" EntityType="Self.aspnetroles" Schema="esrivamobile" store:Type="Tables" />
+          <EntitySet Name="aspnetuserclaims" EntityType="Self.aspnetuserclaims" Schema="esrivamobile" store:Type="Tables" />
+          <EntitySet Name="aspnetuserlogins" EntityType="Self.aspnetuserlogins" Schema="esrivamobile" store:Type="Tables" />
+          <EntitySet Name="aspnetuserroles" EntityType="Self.aspnetuserroles" Schema="esrivamobile" store:Type="Tables" />
+          <EntitySet Name="aspnetusers" EntityType="Self.aspnetusers" Schema="esrivamobile" store:Type="Tables" />
+          <EntitySet Name="dbfriendlist" EntityType="Self.dbfriendlist" Schema="esrivamobile" store:Type="Tables" />
+          <EntitySet Name="dbuser" EntityType="Self.dbuser" Schema="esrivamobile" store:Type="Tables" />
+          <AssociationSet Name="ApplicationUser_Claims" Association="Self.ApplicationUser_Claims">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserclaims" EntitySet="aspnetuserclaims" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Logins" Association="Self.ApplicationUser_Logins">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserlogins" EntitySet="aspnetuserlogins" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Roles" Association="Self.ApplicationUser_Roles">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_dbuser" Association="Self.Fk_dbuser">
+            <End Role="dbuser" EntitySet="dbuser" />
+            <End Role="dbfriendlist" EntitySet="dbfriendlist" />
+          </AssociationSet>
+          <AssociationSet Name="IdentityRole_Users" Association="Self.IdentityRole_Users">
+            <End Role="aspnetroles" EntitySet="aspnetroles" />
+            <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="esrivamobileModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="esrivamobileEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="aspnetroles" EntityType="esrivamobileModel.aspnetrole" />
+          <EntitySet Name="aspnetuserclaims" EntityType="esrivamobileModel.aspnetuserclaim" />
+          <EntitySet Name="aspnetuserlogins" EntityType="esrivamobileModel.aspnetuserlogin" />
+          <EntitySet Name="aspnetusers" EntityType="esrivamobileModel.aspnetuser" />
+          <EntitySet Name="dbfriendlists" EntityType="esrivamobileModel.dbfriendlist" />
+          <EntitySet Name="dbusers" EntityType="esrivamobileModel.dbuser" />
+          <AssociationSet Name="ApplicationUser_Claims" Association="esrivamobileModel.ApplicationUser_Claims">
+            <End Role="aspnetuser" EntitySet="aspnetusers" />
+            <End Role="aspnetuserclaim" EntitySet="aspnetuserclaims" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Logins" Association="esrivamobileModel.ApplicationUser_Logins">
+            <End Role="aspnetuser" EntitySet="aspnetusers" />
+            <End Role="aspnetuserlogin" EntitySet="aspnetuserlogins" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_dbuser" Association="esrivamobileModel.Fk_dbuser">
+            <End Role="dbuser" EntitySet="dbusers" />
+            <End Role="dbfriendlist" EntitySet="dbfriendlists" />
+          </AssociationSet>
+          <AssociationSet Name="aspnetuserroles" Association="esrivamobileModel.aspnetuserroles">
+            <End Role="aspnetuser" EntitySet="aspnetusers" />
+            <End Role="aspnetrole" EntitySet="aspnetroles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aspnetrole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aspnetusers" Relationship="esrivamobileModel.aspnetuserroles" FromRole="aspnetrole" ToRole="aspnetuser" />
+        </EntityType>
+        <EntityType Name="aspnetuserclaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="ClaimValue" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aspnetuser" Relationship="esrivamobileModel.ApplicationUser_Claims" FromRole="aspnetuserclaim" ToRole="aspnetuser" />
+        </EntityType>
+        <EntityType Name="aspnetuserlogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aspnetuser" Relationship="esrivamobileModel.ApplicationUser_Logins" FromRole="aspnetuserlogin" ToRole="aspnetuser" />
+        </EntityType>
+        <EntityType Name="aspnetuser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aspnetuserclaims" Relationship="esrivamobileModel.ApplicationUser_Claims" FromRole="aspnetuser" ToRole="aspnetuserclaim" />
+          <NavigationProperty Name="aspnetuserlogins" Relationship="esrivamobileModel.ApplicationUser_Logins" FromRole="aspnetuser" ToRole="aspnetuserlogin" />
+          <NavigationProperty Name="aspnetroles" Relationship="esrivamobileModel.aspnetuserroles" FromRole="aspnetuser" ToRole="aspnetrole" />
+        </EntityType>
+        <EntityType Name="dbfriendlist">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="FriendId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FriendId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CreateBy" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <Property Name="UpdateBy" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="dbuser" Relationship="esrivamobileModel.Fk_dbuser" FromRole="dbfriendlist" ToRole="dbuser" />
+        </EntityType>
+        <EntityType Name="dbuser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CreateBy" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <Property Name="UpdateBy" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" />
+          <Property Name="IsVerified" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="dbfriendlists" Relationship="esrivamobileModel.Fk_dbuser" FromRole="dbuser" ToRole="dbfriendlist" />
+        </EntityType>
+        <Association Name="ApplicationUser_Claims">
+          <End Type="esrivamobileModel.aspnetuser" Role="aspnetuser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="esrivamobileModel.aspnetuserclaim" Role="aspnetuserclaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetuser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserclaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Logins">
+          <End Type="esrivamobileModel.aspnetuser" Role="aspnetuser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="esrivamobileModel.aspnetuserlogin" Role="aspnetuserlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetuser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserlogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_dbuser">
+          <End Type="esrivamobileModel.dbuser" Role="dbuser" Multiplicity="1" />
+          <End Type="esrivamobileModel.dbfriendlist" Role="dbfriendlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbuser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="dbfriendlist">
+              <PropertyRef Name="FriendId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aspnetuserroles">
+          <End Type="esrivamobileModel.aspnetuser" Role="aspnetuser" Multiplicity="*" />
+          <End Type="esrivamobileModel.aspnetrole" Role="aspnetrole" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="esrivamobileModelStoreContainer" CdmEntityContainer="esrivamobileEntities">
+          <EntitySetMapping Name="aspnetroles">
+            <EntityTypeMapping TypeName="esrivamobileModel.aspnetrole">
+              <MappingFragment StoreEntitySet="aspnetroles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnetuserclaims">
+            <EntityTypeMapping TypeName="esrivamobileModel.aspnetuserclaim">
+              <MappingFragment StoreEntitySet="aspnetuserclaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnetuserlogins">
+            <EntityTypeMapping TypeName="esrivamobileModel.aspnetuserlogin">
+              <MappingFragment StoreEntitySet="aspnetuserlogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnetusers">
+            <EntityTypeMapping TypeName="esrivamobileModel.aspnetuser">
+              <MappingFragment StoreEntitySet="aspnetusers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbfriendlists">
+            <EntityTypeMapping TypeName="esrivamobileModel.dbfriendlist">
+              <MappingFragment StoreEntitySet="dbfriendlist">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="FriendId" ColumnName="FriendId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbusers">
+            <EntityTypeMapping TypeName="esrivamobileModel.dbuser">
+              <MappingFragment StoreEntitySet="dbuser">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="aspnetuserroles" TypeName="esrivamobileModel.aspnetuserroles" StoreEntitySet="aspnetuserroles">
+            <EndProperty Name="aspnetrole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="aspnetuser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:ViewModel="clr-namespace:EsrivaMobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="EsrivaMobile.Views.RegistrationPage"
+             Title="Register"
+             NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.BindingContext>
+        <ViewModel:RegisterViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#1E1E1E" Orientation="Vertical">
+                <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label 
+                        Text="Bergabung Dengan Komunitas Kami!"
+                        TextColor="White"
+                        FontSize="36"/>
+                    
+                    <StackLayout Grid.Row="1">
+                        <Entry Text="{Binding Name}" 
+                               TextColor="White"
+                               PlaceholderColor="Gray"
+                               Placeholder="Name" 
+                               FontSize="16" 
+                               x:Name="EntryFirstName">
+                        </Entry>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2">
+                        <Entry Text="{Binding Email}" 
+                               TextColor="White"
+                               PlaceholderColor="Gray"
+                               Placeholder="E-mail" 
+                               FontSize="16" 
+                               x:Name="EntryUserEmail">
+                        </Entry>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3">
+                        <Entry Text="{Binding Password}" 
+                               TextColor="White"
+                               PlaceholderColor="Gray"
+                               Placeholder="Password" 
+                               IsPassword="True" 
+                               FontSize="16" 
+                               x:Name="EntryUserPassword"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="4">
+                        <Entry Text="{Binding ConfirmPassword}" 
+                               TextColor="White"
+                               PlaceholderColor="Gray"
+                               Placeholder="Confirm Password" 
+                               IsPassword="True" FontSize="16" 
+                               x:Name="EntryUserConfirmationPassword"
+                               Margin="0,0,0,30"/>
+                    </StackLayout>
+                    <CheckBox 
+                        Grid.Row="5"
+                        HorizontalOptions="Start"/>
+                    <StackLayout Grid.Row="6">
+                        <Label 
+                            Text="Saya setuju dengan" 
+                            HorizontalOptions="Start"
+                            TextColor="White"
+                            FontSize="14"
+                            Margin="35,-26,0,0"/>
+                        <Label
+                            Text="Syarat dan Ketentuan" 
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="16"
+                            Margin="100,-26,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="TapGestureRecognizer_Tapped"
+                                    NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <Frame 
+                        Grid.Row="7"
+                        CornerRadius="20" 
+                        Padding="-5">
+                        <Button Command="{Binding RegisterCommand}"
+                            Text="Register" 
+                            HorizontalOptions="CenterAndExpand" 
+                            WidthRequest="500" TextColor="White" 
+                            BackgroundColor="#1ABA9B"/>
+                    </Frame>
+                    <StackLayout Grid.Row="8">
+                        <Label 
+                            Text="Atau" 
+                            HorizontalOptions="CenterAndExpand"
+                            TextColor="White"
+                            FontSize="14"
+                            Margin="0,5,0,5"/>
+                    </StackLayout>
+                    <Frame 
+                        Grid.Row="9"
+                        CornerRadius="20" 
+                        Padding="-5">
+
+                        <Button 
+                            Text="Login" 
+                            HorizontalOptions="CenterAndExpand" 
+                            WidthRequest="500" TextColor="White" 
+                            BackgroundColor="#1ABA9B"
+                            Command="{Binding NavigateCommand}"
+                            CommandParameter="login"/>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
