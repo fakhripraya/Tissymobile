@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.Android\\EsrivaMobile.Android.csproj": {}
+    "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.Android\\EsrivaMobile.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.Android\\EsrivaMobile.Android.csproj": {
+    "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.Android\\EsrivaMobile.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.Android\\EsrivaMobile.Android.csproj",
+        "projectUniqueName": "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.Android\\EsrivaMobile.Android.csproj",
         "projectName": "EsrivaMobile.Android",
-        "projectPath": "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.Android\\EsrivaMobile.Android.csproj",
+        "projectPath": "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.Android\\EsrivaMobile.Android.csproj",
         "packagesPath": "C:\\Users\\Fakhri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.Android\\obj\\",
+        "outputPath": "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid90": {
             "projectReferences": {
-              "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj": {
-                "projectPath": "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj"
+              "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj": {
+                "projectPath": "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj"
               }
             }
           }
@@ -49,6 +49,14 @@
             "Microcharts.Forms": {
               "target": "Package",
               "version": "[0.7.1, )"
+            },
+            "Rg.Plugins.Popup": {
+              "target": "Package",
+              "version": "[2.0.0.3, )"
+            },
+            "Xam.Plugin.Media": {
+              "target": "Package",
+              "version": "[5.0.1, )"
             },
             "Xam.Plugins.Settings": {
               "target": "Package",
@@ -94,14 +102,14 @@
         }
       }
     },
-    "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj": {
+    "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj",
+        "projectUniqueName": "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj",
         "projectName": "EsrivaMobile",
-        "projectPath": "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj",
+        "projectPath": "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj",
         "packagesPath": "C:\\Users\\Fakhri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\obj\\",
+        "outputPath": "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -153,6 +161,14 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "Rg.Plugins.Popup": {
+              "target": "Package",
+              "version": "[2.0.0.3, )"
+            },
+            "Xam.Plugin.Media": {
+              "target": "Package",
+              "version": "[5.0.1, )"
             },
             "Xam.Plugins.Settings": {
               "target": "Package",

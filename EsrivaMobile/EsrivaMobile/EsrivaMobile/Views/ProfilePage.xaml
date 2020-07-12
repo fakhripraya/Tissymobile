@@ -13,7 +13,8 @@
             <Color x:Key="WhiteColor">#FFFFFF</Color>
             <Color x:Key="BlackColor">#000000</Color>
             <Color x:Key="TabBGColor">#323238</Color>
-            <Color x:Key="BGColor">#202225</Color>
+            <Color x:Key="BGColor">#1E1E1E</Color>
+            <Color x:Key="FrameColor">#333337</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource TabBGColor}"/>
                 <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource WhiteColor}"/>
@@ -37,17 +38,31 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <StackLayout BackgroundColor="#1E1E1E" Grid.Row="1"/>
+            <StackLayout BackgroundColor="{StaticResource BGColor}" Grid.Row="1"/>
 
             <Frame CornerRadius="200" Margin="40,-40,40,-40" Padding="0" Scale="0.4">
-                <Image Source="Biksu.png" Aspect="Fill"/>
+                <ImageButton x:Name="ProfilePicture" Source="Biksu.png" Aspect="Fill" Clicked="ImageButton_Clicked_2"/>
             </Frame>
             <ImageButton Source="ic_exit.png" WidthRequest="30" HeightRequest="30" Margin="0,10,10,0" HorizontalOptions="End" VerticalOptions="Start" Clicked="ImageButton_Clicked_1"/>
             <ImageButton Source="ic_menu_circle.png" WidthRequest="30" HeightRequest="30" Margin="10,10,0,0" HorizontalOptions="Start" VerticalOptions="Start" Clicked="ImageButton_Clicked"/>
-            <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" Padding="18" HeightRequest="220" VerticalOptions="StartAndExpand" BackgroundColor="#333337">
+            <Frame 
+                Grid.Row="1"
+                CornerRadius="20" 
+                Padding="-7.5"
+                Margin="5">
+                <Button 
+                    Command="{Binding RegisterCommand}"
+                    Text="Edit Profile"
+                    FontAttributes="Bold"
+                    HorizontalOptions="CenterAndExpand" 
+                    WidthRequest="500" TextColor="White" 
+                    BackgroundColor="#1ABA9B"/>
+            </Frame>
+            <Frame Grid.Row="2" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" Padding="18" HeightRequest="220" VerticalOptions="StartAndExpand" BackgroundColor="{StaticResource FrameColor}">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -70,20 +85,23 @@
                         </Grid.ColumnDefinitions>
                         <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                             <Image Source="PhotoIcon.png" WidthRequest="45" HeightRequest="45" HorizontalOptions="Center"/>
-                            <Label Text="Photography" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                            <Label Text="3" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="Podcasts" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
                         </StackLayout>
                         <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                             <Image Source="Picnic.png" WidthRequest="45" HeightRequest="45" HorizontalOptions="Center"/>
-                            <Label Text="Picnic" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                            <Label Text="89" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="Following" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                             <Image Source="Binoculars.png" WidthRequest="45" HeightRequest="45" HorizontalOptions="Center"/>
-                            <Label Text="Sightseeing" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                            <Label Text="102" TextColor="White" FontAttributes="Bold" FontSize="12" HorizontalOptions="Center"/>
+                            <Label Text="Followers" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
                         </StackLayout>
                     </Grid>
                 </Grid>
             </Frame>
-            <Frame Grid.Row="2" HasShadow="True" HeightRequest="250" CornerRadius="10" Margin="20" Padding="18" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#333337">
+            <Frame Grid.Row="3" HasShadow="True" HeightRequest="250" CornerRadius="10" Margin="20" Padding="18" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource FrameColor}">
                 <Grid RowSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -93,7 +111,7 @@
                     <Label Grid.Row="1" Text="I am a dedicated person with a family of four. I enjoy reading, and the knowledge and perspective that my reading gives me has strengthened my teaching skills and presentation abilities. I have been successful at raising a family, and I attribute this success to my ability to plan, schedule, and handle many different tasks at once. This flexibility will help me in the classroom, where there are many different personalities and learning styles." FontSize="14" TextColor="White"/>
                 </Grid>
             </Frame>
-            <Frame x:Name="AdminProfileDash" Grid.Row="3" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" Padding="18,25,18,25" HeightRequest="635" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+            <Frame x:Name="AdminProfileDash" Grid.Row="4" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" Padding="18,25,18,25" HeightRequest="635" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource FrameColor}">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
@@ -238,7 +256,7 @@
                     </Frame>
                 </Grid>
             </Frame>
-            <Frame Grid.Row="4" HasShadow="True" HeightRequest="90" CornerRadius="10" Margin="20" Padding="18,0,18,0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+            <Frame Grid.Row="5" HasShadow="True" HeightRequest="90" CornerRadius="10" Margin="20" Padding="18,0,18,0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource FrameColor}">
                 <Grid RowSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
@@ -256,7 +274,7 @@
                     </StackLayout>
                 </Grid>
             </Frame>
-            <Frame Grid.Row="5" HasShadow="True" HeightRequest="65" CornerRadius="10" Margin="20,0,20,0" Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+            <Frame Grid.Row="6" HasShadow="True" HeightRequest="65" CornerRadius="10" Margin="20,0,20,0" Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource FrameColor}">
                 <Grid RowSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -264,7 +282,7 @@
                     <Label Text="Pengunjung" FontAttributes="Bold" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource WhiteColor}"/>
                 </Grid>
             </Frame>
-            <Frame Grid.Row="6" HasShadow="True" HeightRequest="285" CornerRadius="10" Margin="20,-40,20,20" Padding="10,10,10,-105" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+            <Frame Grid.Row="7" HasShadow="True" HeightRequest="285" CornerRadius="10" Margin="20,-40,20,20" Padding="10,10,10,-105" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource FrameColor}">
                 <Grid RowSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -274,7 +292,7 @@
                     </Frame>
                 </Grid>
             </Frame>
-            <Frame Grid.Row="7" HasShadow="True" HeightRequest="65" CornerRadius="10" Margin="20,0,20,0" Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+            <Frame Grid.Row="8" HasShadow="True" HeightRequest="65" CornerRadius="10" Margin="20,0,20,0" Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource FrameColor}">
                 <Grid RowSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -282,7 +300,7 @@
                     <Label Text="Forum" FontAttributes="Bold" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource WhiteColor}"/>
                 </Grid>
             </Frame>
-            <Frame Grid.Row="8" HasShadow="True" HeightRequest="285" CornerRadius="10" Margin="20,-40,20,20" Padding="10,10,10,-105" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+            <Frame Grid.Row="9" HasShadow="True" HeightRequest="285" CornerRadius="10" Margin="20,-40,20,20" Padding="10,10,10,-105" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource FrameColor}">
                 <Grid RowSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -292,7 +310,7 @@
                     </Frame>
                 </Grid>
             </Frame>
-            <Frame Grid.Row="9" HasShadow="True" HeightRequest="65" CornerRadius="10" Margin="20,0,20,0" Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+            <Frame Grid.Row="10" HasShadow="True" HeightRequest="65" CornerRadius="10" Margin="20,0,20,0" Padding="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource FrameColor}">
                 <Grid RowSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -300,7 +318,7 @@
                     <Label Text="Artikel" FontAttributes="Bold" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource WhiteColor}"/>
                 </Grid>
             </Frame>
-            <Frame Grid.Row="10" HasShadow="True" HeightRequest="285" CornerRadius="10" Margin="20,-40,20,20" Padding="10,10,10,-105" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource TabBGColor}">
+            <Frame Grid.Row="11" HasShadow="True" HeightRequest="285" CornerRadius="10" Margin="20,-40,20,20" Padding="10,10,10,-105" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource FrameColor}">
                 <Grid RowSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

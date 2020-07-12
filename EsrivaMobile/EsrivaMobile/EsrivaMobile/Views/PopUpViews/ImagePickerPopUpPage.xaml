@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EsrivaMobile.Views.PopUpViews.ImagePickerPopUpPage"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <Frame HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#1e1e1e" CornerRadius="10" Padding="10" WidthRequest="300">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Label 
+                Text="Change Profile Photo"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="18"/>
+
+            <Button
+                Grid.Row="1"
+                Text="Choose a photo from gallery"
+                BackgroundColor="#333337"
+                TextColor="White"
+                FontAttributes="Bold"
+                Clicked="Button_Clicked"/>
+            <Button
+                Grid.Row="2"
+                Text="Take a photo"
+                BackgroundColor="#333337"
+                TextColor="White"
+                FontAttributes="Bold"
+                Clicked="Button_Clicked_1"/>
+            <Button
+                Grid.Row="3"
+                Text="Remove profile photo"
+                BackgroundColor="#333337"
+                TextColor="White"
+                FontAttributes="Bold"
+                Clicked="Button_Clicked_2"/>
+        </Grid>
+    </Frame>
+</pages:PopupPage>

@@ -51,6 +51,18 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Rg.Plugins.Popup/2.0.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "4.5.0.530"
+        },
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        }
+      },
       "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
@@ -107,6 +119,21 @@
         },
         "runtime": {
           "lib/xamarinios10/_._": {}
+        }
+      },
+      "Xam.Plugin.Media/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Essentials": "1.5.2"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Plugin.Media.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Media.dll": {}
         }
       },
       "Xam.Plugins.Settings/3.1.1": {
@@ -275,6 +302,8 @@
           "Microcharts.Forms": "0.7.1",
           "Microsoft.CSharp": "4.7.0",
           "Newtonsoft.Json": "12.0.3",
+          "Rg.Plugins.Popup": "2.0.0.3",
+          "Xam.Plugin.Media": "5.0.1",
           "Xam.Plugins.Settings": "3.1.1",
           "Xamarin.Essentials": "1.5.3.2",
           "Xamarin.Forms": "4.6.0.967",
@@ -338,6 +367,18 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Rg.Plugins.Popup/2.0.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "4.5.0.530"
+        },
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        }
+      },
       "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
@@ -380,6 +421,21 @@
         },
         "runtime": {
           "lib/xamarinios10/_._": {}
+        }
+      },
+      "Xam.Plugin.Media/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Essentials": "1.5.2"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Plugin.Media.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Media.dll": {}
         }
       },
       "Xam.Plugins.Settings/3.1.1": {
@@ -548,6 +604,8 @@
           "Microcharts.Forms": "0.7.1",
           "Microsoft.CSharp": "4.7.0",
           "Newtonsoft.Json": "12.0.3",
+          "Rg.Plugins.Popup": "2.0.0.3",
+          "Xam.Plugin.Media": "5.0.1",
           "Xam.Plugins.Settings": "3.1.1",
           "Xamarin.Essentials": "1.5.3.2",
           "Xamarin.Forms": "4.6.0.967",
@@ -611,6 +669,18 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Rg.Plugins.Popup/2.0.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "4.5.0.530"
+        },
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        }
+      },
       "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
@@ -653,6 +723,21 @@
         },
         "runtime": {
           "lib/xamarinios10/_._": {}
+        }
+      },
+      "Xam.Plugin.Media/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Essentials": "1.5.2"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Plugin.Media.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Media.dll": {}
         }
       },
       "Xam.Plugins.Settings/3.1.1": {
@@ -821,6 +906,8 @@
           "Microcharts.Forms": "0.7.1",
           "Microsoft.CSharp": "4.7.0",
           "Newtonsoft.Json": "12.0.3",
+          "Rg.Plugins.Popup": "2.0.0.3",
+          "Xam.Plugin.Media": "5.0.1",
           "Xam.Plugins.Settings": "3.1.1",
           "Xamarin.Essentials": "1.5.3.2",
           "Xamarin.Forms": "4.6.0.967",
@@ -884,6 +971,18 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Rg.Plugins.Popup/2.0.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "4.5.0.530"
+        },
+        "compile": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Rg.Plugins.Popup.dll": {}
+        }
+      },
       "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
@@ -926,6 +1025,21 @@
         },
         "runtime": {
           "lib/xamarinios10/_._": {}
+        }
+      },
+      "Xam.Plugin.Media/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Essentials": "1.5.2"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing.Common.dll"
+        ],
+        "compile": {
+          "lib/xamarinios10/Plugin.Media.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Media.dll": {}
         }
       },
       "Xam.Plugins.Settings/3.1.1": {
@@ -1094,6 +1208,8 @@
           "Microcharts.Forms": "0.7.1",
           "Microsoft.CSharp": "4.7.0",
           "Newtonsoft.Json": "12.0.3",
+          "Rg.Plugins.Popup": "2.0.0.3",
+          "Xam.Plugin.Media": "5.0.1",
           "Xam.Plugins.Settings": "3.1.1",
           "Xamarin.Essentials": "1.5.3.2",
           "Xamarin.Forms": "4.6.0.967",
@@ -1241,6 +1357,54 @@
         "packageIcon.png"
       ]
     },
+    "Rg.Plugins.Popup/2.0.0.3": {
+      "sha512": "/lrKxxsdaF9T+YEnVDaUMj0angdRyvpngSmX8veY/QYhSjT4x3guJTsL8O8D4egDf7MI5McnmMAsst0tkN1LOA==",
+      "type": "package",
+      "path": "rg.plugins.popup/2.0.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "icon.png",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.dll",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.pdb",
+        "lib/monoandroid10.0/Rg.Plugins.Popup.xml",
+        "lib/monoandroid90/Rg.Plugins.Popup.dll",
+        "lib/monoandroid90/Rg.Plugins.Popup.pdb",
+        "lib/monoandroid90/Rg.Plugins.Popup.xml",
+        "lib/net472/Rg.Plugins.Popup.dll",
+        "lib/net472/Rg.Plugins.Popup.pdb",
+        "lib/net472/Rg.Plugins.Popup.xml",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.dll",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.pdb",
+        "lib/netcoreapp3.1/Rg.Plugins.Popup.xml",
+        "lib/netstandard2.0/Rg.Plugins.Popup.dll",
+        "lib/netstandard2.0/Rg.Plugins.Popup.pdb",
+        "lib/netstandard2.0/Rg.Plugins.Popup.xml",
+        "lib/tizen40/Rg.Plugins.Popup.dll",
+        "lib/tizen40/Rg.Plugins.Popup.pdb",
+        "lib/tizen40/Rg.Plugins.Popup.xml",
+        "lib/uap10.0.17763/Rg.Plugins.Popup.dll",
+        "lib/uap10.0.17763/Rg.Plugins.Popup.pdb",
+        "lib/uap10.0.17763/Rg.Plugins.Popup.pri",
+        "lib/uap10.0.17763/Rg.Plugins.Popup.xml",
+        "lib/xamarinios10/Rg.Plugins.Popup.dll",
+        "lib/xamarinios10/Rg.Plugins.Popup.pdb",
+        "lib/xamarinios10/Rg.Plugins.Popup.xml",
+        "lib/xamarinmac20/Rg.Plugins.Popup.dll",
+        "lib/xamarinmac20/Rg.Plugins.Popup.pdb",
+        "lib/xamarinmac20/Rg.Plugins.Popup.xml",
+        "lib/xamarintvos10/Rg.Plugins.Popup.dll",
+        "lib/xamarintvos10/Rg.Plugins.Popup.pdb",
+        "lib/xamarintvos10/Rg.Plugins.Popup.xml",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.dll",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.pdb",
+        "lib/xamarinwatchos10/Rg.Plugins.Popup.xml",
+        "readme.txt",
+        "rg.plugins.popup.2.0.0.3.nupkg.sha512",
+        "rg.plugins.popup.nuspec"
+      ]
+    },
     "SkiaSharp/1.59.1": {
       "sha512": "Le+YqP0aWwJ5ImHikWiLWOWjdH8oOV6F2D7fknzKp9ArzDIrtPASeiHpI1RgqQEK/GGvR56B2l5belsDzwK7uQ==",
       "type": "package",
@@ -1362,6 +1526,46 @@
         "system.valuetuple.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Xam.Plugin.Media/5.0.1": {
+      "sha512": "UUR31EEnhDVa4IXgVfQIAL3u9v6YAyppsb5UlO9MNJ4quGGkfcWX++JexjB1nMGqvCzsjAT2t32drKDIXoW4SQ==",
+      "type": "package",
+      "path": "xam.plugin.media/5.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid10.0/Plugin.Media.dll",
+        "lib/monoandroid10.0/Plugin.Media.pdb",
+        "lib/monoandroid10.0/Plugin.Media.xml",
+        "lib/monoandroid80/Plugin.Media.dll",
+        "lib/monoandroid80/Plugin.Media.pdb",
+        "lib/monoandroid80/Plugin.Media.xml",
+        "lib/monoandroid81/Plugin.Media.dll",
+        "lib/monoandroid81/Plugin.Media.pdb",
+        "lib/monoandroid81/Plugin.Media.xml",
+        "lib/monoandroid90/Plugin.Media.dll",
+        "lib/monoandroid90/Plugin.Media.pdb",
+        "lib/monoandroid90/Plugin.Media.xml",
+        "lib/netstandard1.0/Plugin.Media.dll",
+        "lib/netstandard1.0/Plugin.Media.pdb",
+        "lib/netstandard1.0/Plugin.Media.xml",
+        "lib/netstandard2.0/Plugin.Media.dll",
+        "lib/netstandard2.0/Plugin.Media.pdb",
+        "lib/netstandard2.0/Plugin.Media.xml",
+        "lib/tizen40/Plugin.Media.dll",
+        "lib/tizen40/Plugin.Media.pdb",
+        "lib/tizen40/Plugin.Media.xml",
+        "lib/uap10.0.16299/Plugin.Media.dll",
+        "lib/uap10.0.16299/Plugin.Media.pdb",
+        "lib/uap10.0.16299/Plugin.Media.pri",
+        "lib/uap10.0.16299/Plugin.Media.xml",
+        "lib/xamarinios10/Plugin.Media.dll",
+        "lib/xamarinios10/Plugin.Media.pdb",
+        "lib/xamarinios10/Plugin.Media.xml",
+        "readme.txt",
+        "xam.plugin.media.5.0.1.nupkg.sha512",
+        "xam.plugin.media.nuspec"
       ]
     },
     "Xam.Plugins.Settings/3.1.1": {
@@ -1820,6 +2024,8 @@
       "EsrivaMobile >= 1.0.0",
       "Microcharts >= 0.7.1",
       "Microcharts.Forms >= 0.7.1",
+      "Rg.Plugins.Popup >= 2.0.0.3",
+      "Xam.Plugin.Media >= 5.0.1",
       "Xam.Plugins.Settings >= 3.1.1",
       "Xamarin.Essentials >= 1.5.3.2",
       "Xamarin.Forms >= 4.6.0.967"
@@ -1832,11 +2038,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.iOS\\EsrivaMobile.iOS.csproj",
+      "projectUniqueName": "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.iOS\\EsrivaMobile.iOS.csproj",
       "projectName": "EsrivaMobile.iOS",
-      "projectPath": "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.iOS\\EsrivaMobile.iOS.csproj",
+      "projectPath": "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.iOS\\EsrivaMobile.iOS.csproj",
       "packagesPath": "C:\\Users\\Fakhri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.iOS\\obj\\",
+      "outputPath": "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -1857,8 +2063,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj": {
-              "projectPath": "C:\\Users\\Fakhri\\source\\repos\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj"
+            "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj": {
+              "projectPath": "E:\\New_Git_Repo\\Tissymobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile\\EsrivaMobile.csproj"
             }
           }
         }
@@ -1874,6 +2080,14 @@
           "Microcharts.Forms": {
             "target": "Package",
             "version": "[0.7.1, )"
+          },
+          "Rg.Plugins.Popup": {
+            "target": "Package",
+            "version": "[2.0.0.3, )"
+          },
+          "Xam.Plugin.Media": {
+            "target": "Package",
+            "version": "[5.0.1, )"
           },
           "Xam.Plugins.Settings": {
             "target": "Package",

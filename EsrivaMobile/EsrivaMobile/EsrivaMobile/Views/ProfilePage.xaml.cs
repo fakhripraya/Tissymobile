@@ -9,12 +9,17 @@ using Xamarin.Forms.Xaml;
 using SkiaSharp;
 using Microcharts;
 using EsrivaMobile.Helpers;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
+using Rg.Plugins.Popup.Services;
+using EsrivaMobile.Views.PopUpViews;
 
 namespace EsrivaMobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
+        private ImageSource pfpImageSource;
         List<Entry> entriesPengunjung = new List<Entry>
         {
             new Entry(200)
@@ -307,6 +312,17 @@ namespace EsrivaMobile.Views
             Shell.SetTabBarIsVisible(this, true);
         }
 
+        public ProfilePage(ImageSource pfpImageSource)
+        {
+            InitializeComponent();
+
+            sPengunjung.Chart = new LineChart { Entries = entriesPengunjung };
+            sForum.Chart = new LineChart { Entries = entriesForum };
+            sArticle.Chart = new LineChart { Entries = entriesArtikel };
+            Shell.SetFlyoutBehavior(this, FlyoutBehavior.Flyout);
+            Shell.SetTabBarIsVisible(this, true);
+        }
+
         private async void buttonAnimation(ImageButton sender)
         {
             var imageButton = sender;
@@ -336,6 +352,11 @@ namespace EsrivaMobile.Views
                 Settings.AccessToken = "";
                 await Application.Current.MainPage.DisplayAlert("Info", "Successfully Sign Out!", "OK");
             }
+        }
+
+        private async void ImageButton_Clicked_2(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new ImagePickerPopUpPage("EDIT"));
         }
     }
 }

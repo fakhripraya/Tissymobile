@@ -12,6 +12,8 @@ namespace EsrivaMobile.Services
 {
     public class ApiServices
     {
+        private string APILInk { get; set; } = "192.168.1.102:45459";
+
         public async Task<(bool,string)> RegisterAsync(string Name, string email, string password, string confirmPassword)
         {
             //IF NOT DEBUG
@@ -30,7 +32,7 @@ namespace EsrivaMobile.Services
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await client
-                .PostAsync("http://192.168.1.103:45455/api/Account/Register", content);
+                .PostAsync($"http://{APILInk}/api/Account/Register", content);
 
             var errorMessage = await response.Content.ReadAsStringAsync();
 
@@ -47,7 +49,7 @@ namespace EsrivaMobile.Services
             };
 
             var request = new HttpRequestMessage(
-                HttpMethod.Post, "http://192.168.1.103:45455/Token");
+                HttpMethod.Post, $"http://{APILInk}/Token");
 
             request.Content = new FormUrlEncodedContent(keyValues);
 
@@ -81,7 +83,7 @@ namespace EsrivaMobile.Services
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await client
-                .PostAsync("http://192.168.1.103:45455/api/Account/sendEmailVerification", content);
+                .PostAsync($"http://{APILInk}/api/Account/sendEmailVerification", content);
 
             var errorMessage = await response.Content.ReadAsStringAsync();
 
@@ -102,7 +104,7 @@ namespace EsrivaMobile.Services
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await client
-                .PostAsync("http://192.168.1.103:45455/api/Account/ConfirmEmail", content);
+                .PostAsync($"http://{APILInk}/api/Account/ConfirmEmail", content);
 
             var errorMessage = await response.Content.ReadAsStringAsync();
 
@@ -124,7 +126,7 @@ namespace EsrivaMobile.Services
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await client
-                .PostAsync("http://192.168.1.103:45455/api/Account/CheckVerification", content);
+                .PostAsync($"http://{APILInk}/api/Account/CheckVerification", content);
 
             var errorMessage = await response.Content.ReadAsStringAsync();
 
