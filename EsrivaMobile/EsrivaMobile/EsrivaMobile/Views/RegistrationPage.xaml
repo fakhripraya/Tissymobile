@@ -9,13 +9,20 @@
              Title="Register"
              NavigationPage.HasNavigationBar="false">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="BGColor">#1E1E1E</Color>
+            <Color x:Key="ButtonColor">#1ABA9B</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.BindingContext>
         <ViewModel:RegisterViewModel/>
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout BackgroundColor="#1E1E1E" Orientation="Vertical">
+            <StackLayout BackgroundColor="{StaticResource BGColor}" Orientation="Vertical">
                 <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="150"/>
@@ -104,7 +111,7 @@
                             Text="Register" 
                             HorizontalOptions="CenterAndExpand" 
                             WidthRequest="500" TextColor="White" 
-                            BackgroundColor="#1ABA9B"/>
+                            BackgroundColor="{StaticResource ButtonColor}"/>
                     </Frame>
                     <StackLayout Grid.Row="8">
                         <Label 
@@ -123,7 +130,7 @@
                             Text="Login" 
                             HorizontalOptions="CenterAndExpand" 
                             WidthRequest="500" TextColor="White" 
-                            BackgroundColor="#1ABA9B"
+                            BackgroundColor="{StaticResource ButtonColor}"
                             Command="{Binding NavigateCommand}"
                             CommandParameter="login"/>
                     </Frame>

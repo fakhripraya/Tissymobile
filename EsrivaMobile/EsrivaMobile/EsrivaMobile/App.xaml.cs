@@ -9,7 +9,7 @@ namespace EsrivaMobile
 {
     public partial class App : Application
     {
-
+        private ApiServices apiService = new ApiServices();
         public App()
         {
             InitializeComponent();
@@ -20,7 +20,15 @@ namespace EsrivaMobile
         {
             if (!string.IsNullOrEmpty(Settings.AccessToken))
             {
-                MainPage = new AppShell();
+                //TODO: Token Expiracy Control Test
+                if (Convert.ToDateTime(Settings.TokenExpired) == DateTime.Now)
+                {
+                    MainPage = new NavigationPage(new LoginPage());
+                }
+                else
+                {
+                    MainPage = new AppShell();
+                }
             }
             else
             {

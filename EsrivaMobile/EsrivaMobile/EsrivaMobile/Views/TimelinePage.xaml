@@ -9,22 +9,12 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="WhiteColor">#FFFFFF</Color>
-            <Color x:Key="BlackColor">#000000</Color>
-            <Color x:Key="TabBGColor">#323238</Color>
-            <Color x:Key="MainBGColor">#1E1E1E</Color>
-            <Color x:Key="SubBGColor">#202225</Color>
-            <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource TabBGColor}"/>
-                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource WhiteColor}"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource MainBGColor}"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource WhiteColor}"/>
-            </Style>
+            <Color x:Key="BGColor">#1E1E1E</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{StaticResource MainBGColor}">
+        <StackLayout BackgroundColor="{StaticResource BGColor}">
             <ImageButton Source="ic_menu_circle.png" WidthRequest="30" HeightRequest="30" Margin="10,10,0,0" HorizontalOptions="Start" VerticalOptions="Start" Clicked="ImageButton_Clicked"/>
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 

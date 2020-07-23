@@ -11,6 +11,7 @@ E:\New_Git_Repo\Tissymobile\EsrivaMobile\EsrivaMobile\EsrivaMobile\obj\Debug\net
 E:\New_Git_Repo\Tissymobile\EsrivaMobile\EsrivaMobile\EsrivaMobile\obj\Debug\netstandard2.0\Views\FriendsPage.xaml.g.cs
 E:\New_Git_Repo\Tissymobile\EsrivaMobile\EsrivaMobile\EsrivaMobile\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
 E:\New_Git_Repo\Tissymobile\EsrivaMobile\EsrivaMobile\EsrivaMobile\obj\Debug\netstandard2.0\Views\NotificationPage.xaml.g.cs
+E:\New_Git_Repo\Tissymobile\EsrivaMobile\EsrivaMobile\EsrivaMobile\obj\Debug\netstandard2.0\Views\PopUpViews\ActivityIndicatorPopUpPage.xaml.g.cs
 E:\New_Git_Repo\Tissymobile\EsrivaMobile\EsrivaMobile\EsrivaMobile\obj\Debug\netstandard2.0\Views\PopUpViews\ImagePickerPopUpPage.xaml.g.cs
 E:\New_Git_Repo\Tissymobile\EsrivaMobile\EsrivaMobile\EsrivaMobile\obj\Debug\netstandard2.0\Views\ProfileEditPage.xaml.g.cs
 E:\New_Git_Repo\Tissymobile\EsrivaMobile\EsrivaMobile\EsrivaMobile\obj\Debug\netstandard2.0\Views\ProfilePage.xaml.g.cs

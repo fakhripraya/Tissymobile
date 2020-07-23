@@ -11,17 +11,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="WhiteColor">#FFFFFF</Color>
-            <Color x:Key="GrayColor">Gray</Color>
-            <Color x:Key="BlackColor">Black</Color>
-            <Color x:Key="TabBGColor">#1BBC9B</Color>
-            <Color x:Key="BGColor">#2C3D50</Color>
-            <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource TabBGColor}"/>
-                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource WhiteColor}"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource BGColor}"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource WhiteColor}"/>
-            </Style>
+            <Color x:Key="SeparatorColor">#2C3D50</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -74,7 +64,7 @@
                 CachingStrategy="RecycleElement"
                 HasUnevenRows="True"
                 SeparatorVisibility="None"
-                SeparatorColor="{StaticResource BGColor}"
+                SeparatorColor="{StaticResource SeparatorColor}"
                 ItemTapped="ListView_ItemTapped">
 
                     <ListView.Behaviors>
@@ -149,7 +139,7 @@
                 CachingStrategy="RecycleElement"
                 HasUnevenRows="True"
                 SeparatorVisibility="None"
-                SeparatorColor="{StaticResource BGColor}"
+                SeparatorColor="{StaticResource SeparatorColor}"
                 ItemTapped="ListView_ItemTapped">
 
                     <ListView.Behaviors>
@@ -224,7 +214,7 @@
                 CachingStrategy="RecycleElement"
                 HasUnevenRows="True"
                 SeparatorVisibility="None"
-                SeparatorColor="{StaticResource BGColor}"
+                SeparatorColor="{StaticResource SeparatorColor}"
                 ItemTapped="ListView_ItemTapped">
 
                     <ListView.Behaviors>

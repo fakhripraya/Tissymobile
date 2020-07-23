@@ -1,5 +1,7 @@
 ﻿using EsrivaMobile.Helpers;
 using EsrivaMobile.Services;
+using EsrivaMobile.Views.PopUpViews;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,7 @@ namespace EsrivaMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EmailVerificationPage : ContentPage
     {
+        private ActivityIndicatorPopUpPage LoadingSplash = new ActivityIndicatorPopUpPage();
         private Random OtpGenerator = new Random();
         private ApiServices ApiServices = new ApiServices();
         private string RecentOTP { get; set; }
@@ -30,34 +33,48 @@ namespace EsrivaMobile.Views
             this.TargetEmail = TargetEmail;
             this.TargetPassword = TargetPassword;
             OTPCode = OtpGenerator.Next(0, 999999).ToString("D6");
-            ApiServices.sendEmailVerificationAsync(TargetEmail, OTPCode);
-            headerText = $"We have sent an OTP code to\n{this.TargetEmail}";
-            bodyText = "Your need to input the OTP code to continue\n" +
-                "if you have not received the OTP verification email,\n" +
-                "please check your \"Spam\" or \"Bulk Email\" folder\n" +
-                "You can also click the resend button below to have\n" +
-                "another email sent to you";
+            EmailVerif();
+            headerText = $"Kami telah mengirimkan sebuah email ke\n{this.TargetEmail}";
+            bodyText = "Anda harus menginput kode OTP\n" +
+                "yang telah kami kirim ke email diatas\n" +
+                "jika anda tidak mendapatkan email apapun dari kami,\n" +
+                "dimohon untuk memeriksa email\n" +
+                "di bagian \"Spam\" atau folder \"Bulk Email\"\n" +
+                "anda juga bisa menekan tombol \"Resend\" dibawah\n" +
+                "jika anda tidak mendapatkan email apapun dari kami";
             RecentOTP = OTPCode;
             BindingContext = this;
         }
+
+        private void EmailVerif()
+        {
+            Task.Run(async ()=>
+            {
+                await ApiServices.sendEmailVerificationAsync(TargetEmail, OTPCode);
+            });
+        }
+
         public ICommand ResendEmailCommand
         {
             get
             {
                 return new Command(async () =>
                 {
+                    await PopupNavigation.Instance.PushAsync(LoadingSplash);
                     OTPCode = OtpGenerator.Next(0, 999999).ToString("D6");
                     var isSuccess = await ApiServices
                         .sendEmailVerificationAsync(TargetEmail , OTPCode);
 
                     if (isSuccess.Item1)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Successfully resend email", "Please kindly check your email again", "OK");
                         RecentOTP = OTPCode;
+                        await PopupNavigation.Instance.RemovePageAsync(LoadingSplash);
+                        await Application.Current.MainPage.DisplayAlert("Email Berhasil Terkirim Ulang", "Silahkan cek kembali email anda", "OK");
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert("Resend fail", isSuccess.Item2, "OK");
+                        await PopupNavigation.Instance.RemovePageAsync(LoadingSplash);
+                        await Application.Current.MainPage.DisplayAlert("Gagal Mengirim Ulang Email", isSuccess.Item2, "OK");
                     }
                 });
             }
@@ -69,6 +86,7 @@ namespace EsrivaMobile.Views
             {
                 return new Command(async () =>
                 {
+                    await PopupNavigation.Instance.PushAsync(LoadingSplash);
                     if (InputOTP == RecentOTP)
                     {
                         var isSuccess = await ApiServices
@@ -76,30 +94,41 @@ namespace EsrivaMobile.Views
 
                         if (isSuccess.Item1)
                         {
-                            var accessToken = await ApiServices
+                            var loginResult = await ApiServices
                                 .LoginAsync(TargetEmail, TargetPassword);
 
-                            if (accessToken == null)
+                            if (loginResult.Item1 == null)
                             {
-                                await Application.Current.MainPage.DisplayAlert("Verification Failed", "Error 404", "OK");
+                                await PopupNavigation.Instance.RemovePageAsync(LoadingSplash);
+                                await Application.Current.MainPage.DisplayAlert("Gagal Verifikasi", "Error 404", "OK");
                             }
                             else
                             {
                                 Settings.Email = TargetEmail;
                                 Settings.Password = TargetPassword;
-                                Settings.AccessToken = accessToken;
+                                Settings.AccessToken = loginResult.Item1;
+                                Settings.TokenExpired = loginResult.Item2;
+                                Settings.TokenIssued = loginResult.Item3;
+                                var userInfo = await ApiServices.getUserInfoAsync();
+                                Settings.UserId = userInfo.UserId;
 
-                                await Application.Current.MainPage.DisplayAlert("Successfully verify email", "We will send you to your dashboard", "OK");
 
+                                await PopupNavigation.Instance.RemovePageAsync(LoadingSplash);
                                 Application.Current.MainPage = new AppShell();
-
                                 await Shell.Current.GoToAsync("//main");
+                                await Application.Current.MainPage.DisplayAlert("Berhasil Verifikasi Email", "Anda akan dipindahkan ke dashboard", "OK");
                             }
                         }
                         else
                         {
-                            await Application.Current.MainPage.DisplayAlert("Verification Failed", isSuccess.Item2, "OK");
+                            await PopupNavigation.Instance.RemovePageAsync(LoadingSplash);
+                            await Application.Current.MainPage.DisplayAlert("Gagal Verifikasi", isSuccess.Item2, "OK");
                         }
+                    }
+                    else
+                    {
+                        await PopupNavigation.Instance.RemovePageAsync(LoadingSplash);
+                        await Application.Current.MainPage.DisplayAlert("Gagal Verifikasi", "Kode OTP tidak sesuai", "OK");
                     }
                 });
             }

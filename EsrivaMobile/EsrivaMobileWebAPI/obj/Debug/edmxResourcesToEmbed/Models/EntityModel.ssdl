@@ -51,6 +51,30 @@
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
   </EntityType>
+  <EntityType Name="dbfollowers">
+    <Key>
+      <PropertyRef Name="FollowerId" />
+    </Key>
+    <Property Name="FollowerId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" />
+    <Property Name="IsDelete" Type="bool" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="512" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="512" />
+    <Property Name="UpdateDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="dbfollowing">
+    <Key>
+      <PropertyRef Name="FollowingId" />
+    </Key>
+    <Property Name="FollowingId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" />
+    <Property Name="IsDelete" Type="bool" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="512" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="512" />
+    <Property Name="UpdateDate" Type="datetime" Precision="0" />
+  </EntityType>
   <EntityType Name="dbfriendlist">
     <Key>
       <PropertyRef Name="UserId" />
@@ -58,11 +82,41 @@
     </Key>
     <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
     <Property Name="FriendId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="IsDelete" Type="bool" />
     <Property Name="CreateBy" Type="varchar" MaxLength="256" />
     <Property Name="CreateDate" Type="datetime" Precision="0" />
     <Property Name="UpdateBy" Type="varchar" MaxLength="256" />
     <Property Name="UpdateDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="dbnotification">
+    <Key>
+      <PropertyRef Name="NotificationId" />
+    </Key>
+    <Property Name="NotificationId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" />
+    <Property Name="NotifType" Type="varchar" MaxLength="128" />
+    <Property Name="Content" Type="varchar" MaxLength="45" />
+    <Property Name="ImageSrc" Type="varchar" MaxLength="512" />
     <Property Name="IsDelete" Type="bool" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="512" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="512" />
+    <Property Name="UpdateDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="dbpodcasts">
+    <Key>
+      <PropertyRef Name="PodcastId" />
+    </Key>
+    <Property Name="PodcastId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" />
+    <Property Name="Title" Type="varchar" MaxLength="128" />
+    <Property Name="Likes" Type="varchar" MaxLength="45" />
+    <Property Name="Heards" Type="varchar" MaxLength="45" />
+    <Property Name="IsDelete" Type="bool" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="512" />
+    <Property Name="CreateDate" Type="datetime" Precision="0" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="512" />
+    <Property Name="UpdateDate" Type="datetime" Precision="0" />
   </EntityType>
   <EntityType Name="dbuser">
     <Key>
@@ -71,13 +125,20 @@
     <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="256" />
     <Property Name="Email" Type="varchar" MaxLength="256" />
+    <Property Name="Rank" Type="varchar" MaxLength="45" />
     <Property Name="PhoneNumber" Type="varchar" MaxLength="12" />
+    <Property Name="AboutMe" Type="varchar" MaxLength="512" />
+    <Property Name="ProfilePicSrc" Type="varchar" MaxLength="512" />
+    <Property Name="Location1" Type="varchar" MaxLength="128" />
+    <Property Name="Location2" Type="varchar" MaxLength="128" />
+    <Property Name="Location3" Type="varchar" MaxLength="128" />
+    <Property Name="IsVerified" Type="bool" />
+    <Property Name="IsDelete" Type="bool" />
+    <Property Name="IsCustomRank" Type="bool" />
     <Property Name="CreateBy" Type="varchar" MaxLength="256" />
     <Property Name="CreateDate" Type="datetime" Precision="0" />
     <Property Name="UpdateBy" Type="varchar" MaxLength="256" />
     <Property Name="UpdateDate" Type="datetime" Precision="0" />
-    <Property Name="IsVerified" Type="bool" />
-    <Property Name="IsDelete" Type="bool" />
   </EntityType>
   <Association Name="ApplicationUser_Claims">
     <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
@@ -121,7 +182,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Fk_dbuser">
+  <Association Name="fk_user_followers">
+    <End Role="dbuser" Type="Self.dbuser" Multiplicity="0..1" />
+    <End Role="dbfollowers" Type="Self.dbfollowers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dbuser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="dbfollowers">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_following">
+    <End Role="dbuser" Type="Self.dbuser" Multiplicity="0..1" />
+    <End Role="dbfollowing" Type="Self.dbfollowing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dbuser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="dbfollowing">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_friendlist">
     <End Role="dbuser" Type="Self.dbuser" Multiplicity="1" />
     <End Role="dbfriendlist" Type="Self.dbfriendlist" Multiplicity="*" />
     <ReferentialConstraint>
@@ -130,6 +215,30 @@
       </Principal>
       <Dependent Role="dbfriendlist">
         <PropertyRef Name="FriendId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_notification">
+    <End Role="dbuser" Type="Self.dbuser" Multiplicity="0..1" />
+    <End Role="dbnotification" Type="Self.dbnotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dbuser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="dbnotification">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_podcast">
+    <End Role="dbuser" Type="Self.dbuser" Multiplicity="0..1" />
+    <End Role="dbpodcasts" Type="Self.dbpodcasts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dbuser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="dbpodcasts">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -153,7 +262,11 @@
     <EntitySet Name="aspnetuserlogins" EntityType="Self.aspnetuserlogins" Schema="esrivamobile" store:Type="Tables" />
     <EntitySet Name="aspnetuserroles" EntityType="Self.aspnetuserroles" Schema="esrivamobile" store:Type="Tables" />
     <EntitySet Name="aspnetusers" EntityType="Self.aspnetusers" Schema="esrivamobile" store:Type="Tables" />
+    <EntitySet Name="dbfollowers" EntityType="Self.dbfollowers" Schema="esrivamobile" store:Type="Tables" />
+    <EntitySet Name="dbfollowing" EntityType="Self.dbfollowing" Schema="esrivamobile" store:Type="Tables" />
     <EntitySet Name="dbfriendlist" EntityType="Self.dbfriendlist" Schema="esrivamobile" store:Type="Tables" />
+    <EntitySet Name="dbnotification" EntityType="Self.dbnotification" Schema="esrivamobile" store:Type="Tables" />
+    <EntitySet Name="dbpodcasts" EntityType="Self.dbpodcasts" Schema="esrivamobile" store:Type="Tables" />
     <EntitySet Name="dbuser" EntityType="Self.dbuser" Schema="esrivamobile" store:Type="Tables" />
     <AssociationSet Name="ApplicationUser_Claims" Association="Self.ApplicationUser_Claims">
       <End Role="aspnetusers" EntitySet="aspnetusers" />
@@ -167,9 +280,25 @@
       <End Role="aspnetusers" EntitySet="aspnetusers" />
       <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
     </AssociationSet>
-    <AssociationSet Name="Fk_dbuser" Association="Self.Fk_dbuser">
+    <AssociationSet Name="fk_user_followers" Association="Self.fk_user_followers">
+      <End Role="dbuser" EntitySet="dbuser" />
+      <End Role="dbfollowers" EntitySet="dbfollowers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_following" Association="Self.fk_user_following">
+      <End Role="dbuser" EntitySet="dbuser" />
+      <End Role="dbfollowing" EntitySet="dbfollowing" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_friendlist" Association="Self.fk_user_friendlist">
       <End Role="dbuser" EntitySet="dbuser" />
       <End Role="dbfriendlist" EntitySet="dbfriendlist" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_notification" Association="Self.fk_user_notification">
+      <End Role="dbuser" EntitySet="dbuser" />
+      <End Role="dbnotification" EntitySet="dbnotification" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_podcast" Association="Self.fk_user_podcast">
+      <End Role="dbuser" EntitySet="dbuser" />
+      <End Role="dbpodcasts" EntitySet="dbpodcasts" />
     </AssociationSet>
     <AssociationSet Name="IdentityRole_Users" Association="Self.IdentityRole_Users">
       <End Role="aspnetroles" EntitySet="aspnetroles" />

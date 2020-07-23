@@ -13,13 +13,16 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
 using EsrivaMobile.Views.PopUpViews;
+using EsrivaMobile.Services;
+using System.IO;
+using System.Net.Http;
+using EsrivaMobile.ViewModels;
 
 namespace EsrivaMobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
-        private ImageSource pfpImageSource;
         List<Entry> entriesPengunjung = new List<Entry>
         {
             new Entry(200)
@@ -301,24 +304,16 @@ namespace EsrivaMobile.Views
             },
         };
 
-        public ProfilePage()
+        public ProfilePage()    
         {
             InitializeComponent();
+
+            BindingContext = new ProfileViewModel();
 
             sPengunjung.Chart = new LineChart { Entries = entriesPengunjung };
             sForum.Chart = new LineChart { Entries = entriesForum };
             sArticle.Chart = new LineChart { Entries = entriesArtikel };
-            Shell.SetFlyoutBehavior(this, FlyoutBehavior.Flyout);
-            Shell.SetTabBarIsVisible(this, true);
-        }
 
-        public ProfilePage(ImageSource pfpImageSource)
-        {
-            InitializeComponent();
-
-            sPengunjung.Chart = new LineChart { Entries = entriesPengunjung };
-            sForum.Chart = new LineChart { Entries = entriesForum };
-            sArticle.Chart = new LineChart { Entries = entriesArtikel };
             Shell.SetFlyoutBehavior(this, FlyoutBehavior.Flyout);
             Shell.SetTabBarIsVisible(this, true);
         }
@@ -342,21 +337,32 @@ namespace EsrivaMobile.Views
         {
             buttonAnimation(sender as ImageButton);
             bool answer = await DisplayAlert("Sign Out", "Would you like to Sign Out?", "Yes", "No");
+            
 
             if (answer)
             {
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
 
-                Settings.Email = "";
-                Settings.Password = "";
                 Settings.AccessToken = "";
                 await Application.Current.MainPage.DisplayAlert("Info", "Successfully Sign Out!", "OK");
             }
         }
 
-        private async void ImageButton_Clicked_2(object sender, EventArgs e)
+        private void ImageButton_Clicked_2(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new ImagePickerPopUpPage("EDIT"));
+            Task.Run(async () =>
+            {
+                var pickerPage = new ImagePickerPopUpPage("NOEDIT");
+                pickerPage.OperationCompleted += PickerPage_OperationCompleted;
+                await PopupNavigation.Instance.PushAsync(pickerPage);
+            });
+        }
+
+        private void PickerPage_OperationCompleted(object sender, EventArgs e)
+        {
+            (sender as ImagePickerPopUpPage).OperationCompleted -= PickerPage_OperationCompleted;
+
+            BindingContext = new ProfileViewModel();
         }
     }
 }

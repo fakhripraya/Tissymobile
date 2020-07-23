@@ -42,6 +42,30 @@ namespace EsrivaMobile.Helpers
             }
         }
 
+        public static string TokenExpired
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("TokenExpired", "");
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("TokenExpired", value);
+            }
+        }
+
+        public static string TokenIssued
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("TokenIssued", "");
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("TokenIssued", value);
+            }
+        }
+
         public static string AccessToken
         {
             get
@@ -51,6 +75,26 @@ namespace EsrivaMobile.Helpers
             set
             {
                 AppSettings.AddOrUpdateValue("AccessToken", value);
+            }
+        }
+
+        public static string UserId
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("UserId", "");
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("UserId", value);
+            }
+        }
+
+        public static string APILink
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("APILink", "192.168.1.101:45455");
             }
         }
     }

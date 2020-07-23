@@ -12,6 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModels\Base\**" />
+    <EmbeddedResource Remove="ViewModels\Base\**" />
+    <None Remove="ViewModels\Base\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Models\HomeMenuItem.cs" />
     <Compile Remove="Models\Item.cs" />
     <Compile Remove="Services\IDataStore.cs" />
@@ -62,6 +68,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NotificationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PopUpViews\ActivityIndicatorPopUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PopUpViews\ImagePickerPopUpPage.xaml">

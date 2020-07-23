@@ -29,7 +29,11 @@ namespace EsrivaMobileWebAPI.Models
         public virtual DbSet<aspnetuserclaim> aspnetuserclaims { get; set; }
         public virtual DbSet<aspnetuserlogin> aspnetuserlogins { get; set; }
         public virtual DbSet<aspnetuser> aspnetusers { get; set; }
+        public virtual DbSet<dbfollower> dbfollowers { get; set; }
+        public virtual DbSet<dbfollowing> dbfollowings { get; set; }
         public virtual DbSet<dbfriendlist> dbfriendlists { get; set; }
+        public virtual DbSet<dbnotification> dbnotifications { get; set; }
+        public virtual DbSet<dbpodcast> dbpodcasts { get; set; }
         public virtual DbSet<dbuser> dbusers { get; set; }
     }
 }

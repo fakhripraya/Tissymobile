@@ -17,12 +17,12 @@ namespace EsrivaMobile.Views {
     public partial class EmailVerificationPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry EntryOTP;
+        private global::EsrivaMobile.CustomUI.CustomEntry EntryOTP;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(EmailVerificationPage));
-            EntryOTP = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryOTP");
+            EntryOTP = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EsrivaMobile.CustomUI.CustomEntry>(this, "EntryOTP");
         }
     }
 }

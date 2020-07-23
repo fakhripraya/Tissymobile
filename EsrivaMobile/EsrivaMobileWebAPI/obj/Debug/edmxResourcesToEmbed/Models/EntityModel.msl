@@ -46,29 +46,94 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="dbfriendlists">
-      <EntityTypeMapping TypeName="esrivamobileModel.dbfriendlist">
-        <MappingFragment StoreEntitySet="dbfriendlist">
-          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+    <EntitySetMapping Name="dbfollowers">
+      <EntityTypeMapping TypeName="esrivamobileModel.dbfollower">
+        <MappingFragment StoreEntitySet="dbfollowers">
           <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
           <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
           <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FollowerId" ColumnName="FollowerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbfollowings">
+      <EntityTypeMapping TypeName="esrivamobileModel.dbfollowing">
+        <MappingFragment StoreEntitySet="dbfollowing">
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FollowingId" ColumnName="FollowingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbfriendlists">
+      <EntityTypeMapping TypeName="esrivamobileModel.dbfriendlist">
+        <MappingFragment StoreEntitySet="dbfriendlist">
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
           <ScalarProperty Name="FriendId" ColumnName="FriendId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbnotifications">
+      <EntityTypeMapping TypeName="esrivamobileModel.dbnotification">
+        <MappingFragment StoreEntitySet="dbnotification">
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="NotifType" ColumnName="NotifType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbpodcasts">
+      <EntityTypeMapping TypeName="esrivamobileModel.dbpodcast">
+        <MappingFragment StoreEntitySet="dbpodcasts">
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Heards" ColumnName="Heards" />
+          <ScalarProperty Name="Likes" ColumnName="Likes" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PodcastId" ColumnName="PodcastId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="dbusers">
       <EntityTypeMapping TypeName="esrivamobileModel.dbuser">
         <MappingFragment StoreEntitySet="dbuser">
-          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-          <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
           <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
           <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
           <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="IsCustomRank" ColumnName="IsCustomRank" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+          <ScalarProperty Name="Location3" ColumnName="Location3" />
+          <ScalarProperty Name="Location2" ColumnName="Location2" />
+          <ScalarProperty Name="Location1" ColumnName="Location1" />
+          <ScalarProperty Name="ProfilePicSrc" ColumnName="ProfilePicSrc" />
+          <ScalarProperty Name="AboutMe" ColumnName="AboutMe" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />

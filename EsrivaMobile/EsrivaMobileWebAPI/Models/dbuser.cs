@@ -17,21 +17,40 @@ namespace EsrivaMobileWebAPI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public dbuser()
         {
+            this.dbfollowers = new HashSet<dbfollower>();
+            this.dbfollowings = new HashSet<dbfollowing>();
             this.dbfriendlists = new HashSet<dbfriendlist>();
+            this.dbnotifications = new HashSet<dbnotification>();
+            this.dbpodcasts = new HashSet<dbpodcast>();
         }
     
         public string UserId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        public string Rank { get; set; }
         public string PhoneNumber { get; set; }
+        public string AboutMe { get; set; }
+        public string ProfilePicSrc { get; set; }
+        public string Location1 { get; set; }
+        public string Location2 { get; set; }
+        public string Location3 { get; set; }
+        public Nullable<bool> IsVerified { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
+        public Nullable<bool> IsCustomRank { get; set; }
         public string CreateBy { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string UpdateBy { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
-        public Nullable<bool> IsVerified { get; set; }
-        public Nullable<bool> IsDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dbfollower> dbfollowers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dbfollowing> dbfollowings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<dbfriendlist> dbfriendlists { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dbnotification> dbnotifications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dbpodcast> dbpodcasts { get; set; }
     }
 }

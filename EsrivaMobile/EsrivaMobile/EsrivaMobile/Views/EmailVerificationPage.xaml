@@ -5,48 +5,52 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:ViewModel="clr-namespace:EsrivaMobile.ViewModels"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:EsrivaMobile.CustomUI"
              x:Class="EsrivaMobile.Views.EmailVerificationPage"
              Title="Email Verification"
              NavigationPage.HasNavigationBar="false">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="WhiteColor">#FFFFFF</Color>
-            <Color x:Key="GrayColor">Gray</Color>
-            <Color x:Key="BlackColor">Black</Color>
-            <Color x:Key="TabBGColor">#1BBC9B</Color>
-            <Color x:Key="BGColor">#2C3D50</Color>
+            <Color x:Key="ButtonColor">#1ABA9B</Color>
+            <Color x:Key="BGColor">#1E1E1E</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#1E1E1E" Orientation="Vertical">
+        <StackLayout BackgroundColor="{StaticResource BGColor}" Orientation="Vertical">
             <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Label Text="Verify your Email" FontSize="28" TextColor="White" Margin="0,0,0,25"/>
+                <Label Text="Verifikasi Email Anda" FontSize="28" TextColor="White" Margin="0,0,0,25"/>
                 <Label Grid.Row="1" Text="{Binding headerText}" FontSize="14" TextColor="White" Margin="0,0,0,25"/>
                 <Label Grid.Row="2" Text="{Binding bodyText}" FontSize="14" TextColor="White" Margin="0,0,0,25"/>
-                <Frame Grid.Row="3" 
-                    CornerRadius="20" 
-                    WidthRequest="500"
-                    HorizontalOptions="CenterAndExpand">
-                    <Entry Text="{Binding InputOTP}" 
-                               TextColor="White"
-                               PlaceholderColor="Gray"
-                               IsPassword="True" 
-                               FontSize="16" 
-                               x:Name="EntryOTP"/>
+                <Frame
+                    Grid.Row="3"
+                    BackgroundColor="White"
+                    CornerRadius="20"
+                    WidthRequest="500">
+
                 </Frame>
+                <local:CustomEntry
+                    Grid.Row="3" 
+                    Text="{Binding InputOTP}" 
+                    TextColor="Black"
+                    PlaceholderColor="Gray"
+                    HorizontalTextAlignment="Center"
+                    Placeholder="Kode OTP"
+                    FontSize="16" 
+                    x:Name="EntryOTP"/>
                 <Frame 
-                Grid.Row="4"
+                Grid.Row="5"
                 CornerRadius="20" 
                 Padding="-5">
 
@@ -54,11 +58,11 @@
                     Text="Verify" 
                     HorizontalOptions="CenterAndExpand" 
                     WidthRequest="500" TextColor="White" 
-                    BackgroundColor="#1ABA9B"
+                    BackgroundColor="{StaticResource ButtonColor}"
                     Command="{Binding VerifyOTPCommand}"/>
                 </Frame>
                 <Frame 
-                Grid.Row="5"
+                Grid.Row="6"
                 CornerRadius="20" 
                 Padding="-5">
 
@@ -66,7 +70,7 @@
                     Text="Resend" 
                     HorizontalOptions="CenterAndExpand" 
                     WidthRequest="500" TextColor="White" 
-                    BackgroundColor="#1ABA9B"
+                    BackgroundColor="{StaticResource ButtonColor}"
                     Command="{Binding ResendEmailCommand}"/>
                 </Frame>
             </Grid>

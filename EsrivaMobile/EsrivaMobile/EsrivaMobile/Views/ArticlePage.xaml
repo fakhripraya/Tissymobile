@@ -11,17 +11,9 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="WhiteColor">#FFFFFF</Color>
-            <Color x:Key="GrayColor">Gray</Color>
-            <Color x:Key="BlackColor">Black</Color>
-            <Color x:Key="TabBGColor">#1BBC9B</Color>
-            <Color x:Key="BGColor">#2C3D50</Color>
-            <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource TabBGColor}"/>
-                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource WhiteColor}"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource BGColor}"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource WhiteColor}"/>
-            </Style>
+            <Color x:Key="ButtonColor">#333337</Color>
+            <Color x:Key="ListviewBGColor">#333337</Color>
+            <Color x:Key="BGColor">#1E1E1E</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -34,7 +26,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackLayout BackgroundColor="#1E1E1E"/>
+        <StackLayout BackgroundColor="{StaticResource BGColor}"/>
 
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Grid.RowDefinitions>
@@ -65,7 +57,7 @@
                 WidthRequest="130"
                 VerticalOptions="End"
                 HorizontalOptions="Start"
-                BackgroundColor="#333337"
+                BackgroundColor="{StaticResource ButtonColor}"
                 Opacity="0.7"
                 CornerRadius="10"
                 Margin="0,0,0,10"
@@ -79,7 +71,7 @@
                 WidthRequest="130"
                 VerticalOptions="End"
                 HorizontalOptions="Center"
-                BackgroundColor="#333337"
+                BackgroundColor="{StaticResource ButtonColor}"
                 Opacity="0.7"
                 CornerRadius="10"
                 Margin="0,0,0,10"
@@ -93,7 +85,7 @@
                 WidthRequest="130"
                 VerticalOptions="End"
                 HorizontalOptions="End"
-                BackgroundColor="#333337"
+                BackgroundColor="{StaticResource ButtonColor}"
                 Opacity="0.7"
                 CornerRadius="10"
                 Margin="0,0,0,10"
@@ -129,7 +121,7 @@
                                 CornerRadius="10"
                                 Padding="10"
                                 Margin="10,5,10,5"
-                                BackgroundColor="#333337"
+                                BackgroundColor="{StaticResource ListviewBGColor}"
                                 Opacity="0.9">
                                 <Grid Padding="0" 
                                     RowSpacing="10" 

@@ -1,6 +1,8 @@
 ﻿using EsrivaMobile.Helpers;
 using EsrivaMobile.Services;
 using EsrivaMobile.Views;
+using EsrivaMobile.Views.PopUpViews;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +14,7 @@ namespace EsrivaMobile.ViewModels
 {
     public class RegisterViewModel
     {
+        private ActivityIndicatorPopUpPage LoadingSplash = new ActivityIndicatorPopUpPage();
         private ApiServices ApiServices = new ApiServices();
         public string Name { get; set; }
         public string Email { get; set; }
@@ -29,6 +32,7 @@ namespace EsrivaMobile.ViewModels
             {
                 return new Command(async () =>
                 {
+                    await PopupNavigation.Instance.PushAsync(LoadingSplash);
                     var isSuccess = await ApiServices
                         .RegisterAsync(Name, Email, Password, ConfirmPassword);
 
@@ -37,11 +41,13 @@ namespace EsrivaMobile.ViewModels
                         Settings.Email = Email;
                         Settings.Password = Password;
 
+                        await PopupNavigation.Instance.RemovePageAsync(LoadingSplash);
                         await Application.Current.MainPage.Navigation.PushModalAsync(new EmailVerificationPage(Email,Password));
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert("Registration Failed", isSuccess.Item2, "OK");
+                        await PopupNavigation.Instance.RemovePageAsync(LoadingSplash);
+                        await Application.Current.MainPage.DisplayAlert("Gagal Melakukan Registrasi", isSuccess.Item2, "OK");
                     }
                 });
             }

@@ -5,7 +5,11 @@
     <EntitySet Name="aspnetuserclaims" EntityType="esrivamobileModel.aspnetuserclaim" />
     <EntitySet Name="aspnetuserlogins" EntityType="esrivamobileModel.aspnetuserlogin" />
     <EntitySet Name="aspnetusers" EntityType="esrivamobileModel.aspnetuser" />
+    <EntitySet Name="dbfollowers" EntityType="esrivamobileModel.dbfollower" />
+    <EntitySet Name="dbfollowings" EntityType="esrivamobileModel.dbfollowing" />
     <EntitySet Name="dbfriendlists" EntityType="esrivamobileModel.dbfriendlist" />
+    <EntitySet Name="dbnotifications" EntityType="esrivamobileModel.dbnotification" />
+    <EntitySet Name="dbpodcasts" EntityType="esrivamobileModel.dbpodcast" />
     <EntitySet Name="dbusers" EntityType="esrivamobileModel.dbuser" />
     <AssociationSet Name="ApplicationUser_Claims" Association="esrivamobileModel.ApplicationUser_Claims">
       <End Role="aspnetuser" EntitySet="aspnetusers" />
@@ -15,9 +19,25 @@
       <End Role="aspnetuser" EntitySet="aspnetusers" />
       <End Role="aspnetuserlogin" EntitySet="aspnetuserlogins" />
     </AssociationSet>
-    <AssociationSet Name="Fk_dbuser" Association="esrivamobileModel.Fk_dbuser">
+    <AssociationSet Name="fk_user_followers" Association="esrivamobileModel.fk_user_followers">
+      <End Role="dbuser" EntitySet="dbusers" />
+      <End Role="dbfollower" EntitySet="dbfollowers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_following" Association="esrivamobileModel.fk_user_following">
+      <End Role="dbuser" EntitySet="dbusers" />
+      <End Role="dbfollowing" EntitySet="dbfollowings" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_friendlist" Association="esrivamobileModel.fk_user_friendlist">
       <End Role="dbuser" EntitySet="dbusers" />
       <End Role="dbfriendlist" EntitySet="dbfriendlists" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_notification" Association="esrivamobileModel.fk_user_notification">
+      <End Role="dbuser" EntitySet="dbusers" />
+      <End Role="dbnotification" EntitySet="dbnotifications" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_podcast" Association="esrivamobileModel.fk_user_podcast">
+      <End Role="dbuser" EntitySet="dbusers" />
+      <End Role="dbpodcast" EntitySet="dbpodcasts" />
     </AssociationSet>
     <AssociationSet Name="aspnetuserroles" Association="esrivamobileModel.aspnetuserroles">
       <End Role="aspnetuser" EntitySet="aspnetusers" />
@@ -73,6 +93,32 @@
     <NavigationProperty Name="aspnetuserlogins" Relationship="esrivamobileModel.ApplicationUser_Logins" FromRole="aspnetuser" ToRole="aspnetuserlogin" />
     <NavigationProperty Name="aspnetroles" Relationship="esrivamobileModel.aspnetuserroles" FromRole="aspnetuser" ToRole="aspnetrole" />
   </EntityType>
+  <EntityType Name="dbfollower">
+    <Key>
+      <PropertyRef Name="FollowerId" />
+    </Key>
+    <Property Name="FollowerId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreateBy" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="UpdateBy" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <NavigationProperty Name="dbuser" Relationship="esrivamobileModel.fk_user_followers" FromRole="dbfollower" ToRole="dbuser" />
+  </EntityType>
+  <EntityType Name="dbfollowing">
+    <Key>
+      <PropertyRef Name="FollowingId" />
+    </Key>
+    <Property Name="FollowingId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreateBy" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="UpdateBy" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <NavigationProperty Name="dbuser" Relationship="esrivamobileModel.fk_user_following" FromRole="dbfollowing" ToRole="dbuser" />
+  </EntityType>
   <EntityType Name="dbfriendlist">
     <Key>
       <PropertyRef Name="UserId" />
@@ -80,12 +126,44 @@
     </Key>
     <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="FriendId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="IsDelete" Type="Boolean" />
     <Property Name="CreateBy" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="CreateDate" Type="DateTime" />
     <Property Name="UpdateBy" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="UpdateDate" Type="DateTime" />
+    <NavigationProperty Name="dbuser" Relationship="esrivamobileModel.fk_user_friendlist" FromRole="dbfriendlist" ToRole="dbuser" />
+  </EntityType>
+  <EntityType Name="dbnotification">
+    <Key>
+      <PropertyRef Name="NotificationId" />
+    </Key>
+    <Property Name="NotificationId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="NotifType" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="ImageSrc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
     <Property Name="IsDelete" Type="Boolean" />
-    <NavigationProperty Name="dbuser" Relationship="esrivamobileModel.Fk_dbuser" FromRole="dbfriendlist" ToRole="dbuser" />
+    <Property Name="CreateBy" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="UpdateBy" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <NavigationProperty Name="dbuser" Relationship="esrivamobileModel.fk_user_notification" FromRole="dbnotification" ToRole="dbuser" />
+  </EntityType>
+  <EntityType Name="dbpodcast">
+    <Key>
+      <PropertyRef Name="PodcastId" />
+    </Key>
+    <Property Name="PodcastId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Likes" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Heards" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreateBy" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="UpdateBy" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <NavigationProperty Name="dbuser" Relationship="esrivamobileModel.fk_user_podcast" FromRole="dbpodcast" ToRole="dbuser" />
   </EntityType>
   <EntityType Name="dbuser">
     <Key>
@@ -94,14 +172,25 @@
     <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Rank" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="AboutMe" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="ProfilePicSrc" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="Location1" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Location2" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Location3" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="IsVerified" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="IsCustomRank" Type="Boolean" />
     <Property Name="CreateBy" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="CreateDate" Type="DateTime" />
     <Property Name="UpdateBy" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="UpdateDate" Type="DateTime" />
-    <Property Name="IsVerified" Type="Boolean" />
-    <Property Name="IsDelete" Type="Boolean" />
-    <NavigationProperty Name="dbfriendlists" Relationship="esrivamobileModel.Fk_dbuser" FromRole="dbuser" ToRole="dbfriendlist" />
+    <NavigationProperty Name="dbfollowers" Relationship="esrivamobileModel.fk_user_followers" FromRole="dbuser" ToRole="dbfollower" />
+    <NavigationProperty Name="dbfollowings" Relationship="esrivamobileModel.fk_user_following" FromRole="dbuser" ToRole="dbfollowing" />
+    <NavigationProperty Name="dbfriendlists" Relationship="esrivamobileModel.fk_user_friendlist" FromRole="dbuser" ToRole="dbfriendlist" />
+    <NavigationProperty Name="dbnotifications" Relationship="esrivamobileModel.fk_user_notification" FromRole="dbuser" ToRole="dbnotification" />
+    <NavigationProperty Name="dbpodcasts" Relationship="esrivamobileModel.fk_user_podcast" FromRole="dbuser" ToRole="dbpodcast" />
   </EntityType>
   <Association Name="ApplicationUser_Claims">
     <End Type="esrivamobileModel.aspnetuser" Role="aspnetuser" Multiplicity="1">
@@ -131,7 +220,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Fk_dbuser">
+  <Association Name="fk_user_followers">
+    <End Type="esrivamobileModel.dbuser" Role="dbuser" Multiplicity="0..1" />
+    <End Type="esrivamobileModel.dbfollower" Role="dbfollower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dbuser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="dbfollower">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_following">
+    <End Type="esrivamobileModel.dbuser" Role="dbuser" Multiplicity="0..1" />
+    <End Type="esrivamobileModel.dbfollowing" Role="dbfollowing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dbuser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="dbfollowing">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_friendlist">
     <End Type="esrivamobileModel.dbuser" Role="dbuser" Multiplicity="1" />
     <End Type="esrivamobileModel.dbfriendlist" Role="dbfriendlist" Multiplicity="*" />
     <ReferentialConstraint>
@@ -140,6 +253,30 @@
       </Principal>
       <Dependent Role="dbfriendlist">
         <PropertyRef Name="FriendId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_notification">
+    <End Type="esrivamobileModel.dbuser" Role="dbuser" Multiplicity="0..1" />
+    <End Type="esrivamobileModel.dbnotification" Role="dbnotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dbuser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="dbnotification">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_podcast">
+    <End Type="esrivamobileModel.dbuser" Role="dbuser" Multiplicity="0..1" />
+    <End Type="esrivamobileModel.dbpodcast" Role="dbpodcast" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dbuser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="dbpodcast">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

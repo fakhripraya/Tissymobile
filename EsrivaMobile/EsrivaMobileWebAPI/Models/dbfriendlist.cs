@@ -16,11 +16,11 @@ namespace EsrivaMobileWebAPI.Models
     {
         public string UserId { get; set; }
         public string FriendId { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
         public string CreateBy { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string UpdateBy { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
-        public Nullable<bool> IsDelete { get; set; }
     
         public virtual dbuser dbuser { get; set; }
     }

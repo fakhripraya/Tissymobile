@@ -12,11 +12,9 @@ namespace EsrivaMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfileEditPage : ContentPage
     {
-        private ImageSource pfpImageSource;
-        public ProfileEditPage(ImageSource pfpImageSource)
+        public ProfileEditPage()
         {
             InitializeComponent();
-            this.pfpImageSource = pfpImageSource;
         }
     }
 }
